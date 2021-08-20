@@ -1,0 +1,142 @@
+%%
+%%
+%% beamerinnerthemethuas.sty
+%%
+%% Definitions for the beamer layout for
+%%
+%% The Hague University of Applied Sciences (THUAS)
+%%
+%% (c) J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%%
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is J.E.J. op den Brouw
+%%
+
+\ProvidesPackage{beamerinnerthemethuas}[2021/08/20 V1.0 The Hague University of Applied Sciences inner theme]
+\typeout{The Hague University of Applied Sciences inner theme V1.0 (JodB, 2021)}
+
+%% Xe(La)TeX does some strange  things, so we need to
+%% check for it
+\usepackage{iftex}
+
+\mode<presentation>
+
+%% Beamer fonts et al.
+\setbeamerfont*{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont*{frametitle}{series=\bfseries,size=\Large}
+
+\setbeamertemplate{itemize item}{\color{thuasgray}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{thuasgray}--}
+\setbeamertemplate{itemize subsubitem}{\color{thuasgray}--}
+
+\setbeamertemplate{enumerate item}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{\alph{enumii}.}
+\setbeamertemplate{enumerate subsubitem}{\Roman{enumiii}.}
+
+\setbeamerfont*{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont*{itemize/enumerate subbody}{size=\small}
+\setbeamerfont*{itemize/enumerate subsubbody}{size=\scriptsize}
+
+\setbeamerfont*{page number in head/foot}{size=\small}
+
+% More room between sole lines and list env.
+%https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
+\setlength{\parskip}{1ex}
+
+\setlength\leftmargini  {1.5em}
+\setlength\leftmarginii  {1em}
+\setlength\leftmarginiii  {1em}
+\setlength  \labelsep  {.5em}
+\setlength  \labelwidth{\leftmargini}
+\addtolength\labelwidth{-\labelsep}
+
+\def\@listi{\leftmargin\leftmargini
+            \topsep 0\p@ \@plus2\p@ \@minus2.5\p@
+            \parsep 5\p@
+            \itemsep3\p@ \@plus2\p@ \@minus3\p@}
+\let\@listI\@listi
+\def\@listii{\leftmargin\leftmarginii
+              \topsep    0\p@ \@plus1\p@ \@minus2\p@
+              \parsep    1\p@   \@plus\p@
+              \itemsep   \parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+              \topsep    2\p@ \@plus1\p@ \@minus2\p@
+              \parsep    0\p@   \@plus\p@
+              \itemsep   \parsep}
+
+
+%% For bounding box of image
+\newdimen\tph\tph=0.7\paperheight
+% Title page
+\defbeamertemplate*{title page}{thuas}[1][]
+{
+    \ifxetex
+      \begin{tikzpicture}
+%        \useasboundingbox (0.5,0) [yshift=1.2cm] rectangle (\the\paperwidth,\the\tph);
+        \useasboundingbox (-0.44\paperwidth,-1) [yshift=-2.8cm] rectangle (\the\paperwidth,\the\tph);
+        \node at (0,0) {\includegraphics[width=0.95\paperwidth]{thuasfront.pdf}};
+      \end{tikzpicture}
+    \else
+      \begin{tikzpicture}
+        \ifdim\beamer@paperwidth<12.81cm
+          \useasboundingbox (0.5,0) [yshift=0cm] rectangle (\the\paperwidth,\the\tph);
+          \includegraphics[width=0.95\paperwidth]{thuasfront.pdf};
+        \else
+          \useasboundingbox (0.5,0) [yshift=1.2cm] rectangle (\the\paperwidth,\the\tph);
+          \includegraphics[width=0.95\paperwidth]{thuasfront.pdf};
+        \fi
+      \end{tikzpicture}
+    \fi
+    \ifdim\beamer@paperwidth<12.81cm
+      \ifxetex
+        \vskip-1.5cm%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.95cm,sep=1pt,#1]{title page header}%
+          \usebeamerfont{title}\inserttitle\par%
+        \end{beamercolorbox}%
+        \vskip0.25cm%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.95cm,sep=1pt,#1]{author}%
+          \usebeamerfont{author}\insertauthor%
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.95cm,sep=1pt,#1]{date}
+          \usebeamerfont{author}\insertdate%
+        \end{beamercolorbox}%
+      \else
+        \vskip-0.5cm%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.85cm,sep=1pt,#1]{title page header}%
+          \usebeamerfont{title}\inserttitle\par%
+        \end{beamercolorbox}%
+        \vskip0.25cm%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{author}%
+          \usebeamerfont{author}\insertauthor%
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{date}
+          \usebeamerfont{author}\insertdate%
+        \end{beamercolorbox}%
+      \fi
+    \else
+      \vskip-1.5cm%
+      \begin{beamercolorbox}[wd=12cm,leftskip=0.75cm,sep=1pt,#1]{title page header}%
+        \usebeamerfont{title}\inserttitle\par%
+      \end{beamercolorbox}%
+      \vskip0.25cm%
+      \begin{beamercolorbox}[wd=12cm,leftskip=0.8cm,sep=1pt,#1]{author}%
+        \usebeamerfont{author}\insertauthor%
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=12cm,leftskip=0.8cm,sep=1pt,#1]{date}
+        \usebeamerfont{author}\insertdate%
+      \end{beamercolorbox}%
+    \fi
+    \vfill
+}
+
+\mode<all>

@@ -1,0 +1,67 @@
+%%
+%%
+%% beamerouterthemethuas.sty
+%%
+%% Definitions for the beamer layout for
+%%
+%% The Hague University of Applied Sciences (THUAS)
+%%
+%% (c) J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%%
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is J.E.J. op den Brouw
+%%
+
+\ProvidesPackage{beamerouterthemethuas}[2021/08/20 V1.0 The Hague University of Applied Sciences outer theme]
+\typeout{The Hague University of Applied Sciences outer theme V1.0 (JodB, 2021)}
+
+\mode<presentation>
+
+%% No navigation, TODO
+\setbeamertemplate{navigation symbols}{}
+
+%% The footer of the slide
+\defbeamertemplate*{footline}{thuas}[1][]
+{
+  \usebeamercolor{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \ifnum \theframenumber>1\relax%
+    \leavevmode%
+    \hbox{%
+      \begin{beamercolorbox}[wd=0.95\paperwidth,ht=1ex,dp=4ex]{section in head/foot}%
+        \makebox[2em][r]{\raisebox{1.3em}{\insertframenumber}}%
+        \hfill%
+        \includegraphics[scale=0.5]{thuaslogo}\hspace*{-2ex}%
+      \end{beamercolorbox}}%
+    \vskip0pt%
+  \fi
+}
+
+%% Frame title
+\defbeamertemplate*{frametitle}{thuas}[1][]
+{
+\vskip1cm%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0cm]{frametitle} 
+  \begin{tikzpicture}
+  \useasboundingbox[fill=white] (0.0,0) rectangle(\the\paperwidth,\the\paperheight);
+%  \ifx\insertframesubtitle\@empty%
+      {\node[anchor=west] at (.75,.61){\insertframetitle};}
+%      \else%
+%      {\node[anchor= west] at (1,0.81){\insertframetitle};%
+%       \node[anchor= west] at (3.2,0.41){\insertframesubtitle};}%
+%      \fi
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\mode<all>

@@ -1,0 +1,40 @@
+\mode<presentation>
+
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{blocks}[rounded][shadow=true]  
+
+\defbeamertemplate*{footline}{thuas}[1][]
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=0.95\paperwidth,ht=1ex,dp=4ex,right]{section in head/foot}%
+    \includegraphics[scale=0.5]{thuaslogo}\hspace*{-1ex}%
+    \ifnum \theframenumber>1\relax%
+      \makebox[1em][r]{\raisebox{1.3em}{\insertframenumber}}%
+    \fi
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamerfont{footline}{size=\small}
+\setbeamercolor{section in head/foot}{fg=black}
+
+
+% Frame title
+\defbeamertemplate*{frametitle}{thuas}[1][]
+{
+\vskip1cm%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0cm]{frametitle} 
+  \begin{tikzpicture}
+  \useasboundingbox[fill=white] (0.0,0) rectangle(\the\paperwidth,\the\paperheight);
+%  \ifx\insertframesubtitle\@empty%
+      {\node[anchor=west] at (.75,.61){\insertframetitle};}
+%      \else%
+%      {\node[anchor= west] at (1,0.81){\insertframetitle};%
+%       \node[anchor= west] at (3.2,0.41){\insertframesubtitle};}%
+%      \fi
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\mode<all>

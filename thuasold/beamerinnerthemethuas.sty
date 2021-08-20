@@ -1,0 +1,85 @@
+\mode<presentation>
+
+%\setbeamertemplate{background}{
+%  \begin{tikzpicture}
+%  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+%  \fill[color=brown] (0,2) rectangle (\the\paperwidth,\the\paperheight);
+%  \fill[color=orange] (0,0) rectangle(2.95,1.9);
+%  \fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
+%  \ifnum\thepage>1\relax%
+%   \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+%   \fi
+%  \end{tikzpicture}
+%}
+
+\setbeamerfont{title}{series=\bfseries,size=\Huge}
+\setbeamerfont{frametitle}{series=\bfseries,size=\LARGE}
+
+\setbeamertemplate{itemize item}{\color{thuasgreen}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{thuasgreen}$\bullet$}
+\setbeamertemplate{itemize subsubitem}{\color{thuasgreen}$\bullet$}
+
+\setbeamertemplate{enumerate item}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{\alph{enumii}.}
+\setbeamertemplate{enumerate subitem}{\Roman{enumiii}.}
+
+\setbeamercolor{enumerate item}{fg=thuasgreen}
+\setbeamercolor{enumerate subitem}{fg=thuasgreen}
+\setbeamercolor{enumerate subsubitem}{fg=thuasgreen}
+
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\scriptsize}
+
+\setbeamerfont{page number in head/foot}{size=\normalsize}
+%\setbeamertemplate{footline}[frame number]
+
+% More room between sole lines and list env.
+%https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
+\setlength{\parskip}{1ex}
+
+\setlength\leftmargini  {1.5em}
+\setlength\leftmarginii  {1em}
+\setlength\leftmarginiii  {1em}
+\setlength  \labelsep  {.5em}
+\setlength  \labelwidth{\leftmargini}
+\addtolength\labelwidth{-\labelsep}
+
+\def\@listi{\leftmargin\leftmargini
+            \topsep 0\p@ \@plus2\p@ \@minus2.5\p@
+            \parsep 5\p@
+            \itemsep3\p@ \@plus2\p@ \@minus3\p@}
+\let\@listI\@listi
+\def\@listii{\leftmargin\leftmarginii
+              \topsep    0\p@ \@plus1\p@ \@minus2\p@
+              \parsep    0\p@   \@plus\p@
+              \itemsep   \parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+              \topsep    2\p@ \@plus1\p@ \@minus2\p@
+              \parsep    0\p@   \@plus\p@
+              \itemsep   \parsep}
+
+
+%% For bounding box of imgae
+\newdimen\tph\tph=0.7\paperheight
+% Title page
+\defbeamertemplate*{title page}{thuas}[1][]
+{
+    \begin{tikzpicture}
+    \useasboundingbox (0.5,0) [yshift=-.55cm] rectangle (\the\paperwidth,\the\tph);
+    \includegraphics[width=0.925\paperwidth]{thuasfront};
+    \end{tikzpicture}
+    \begin{beamercolorbox}[wd=12cm,leftskip=0cm,sep=1pt,#1]{title page header}%
+      \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip0.25cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.05cm,sep=1pt,#1]{author}%
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.05cm,sep=1pt,#1]{date}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}%
+    \vfill
+}
+
+\mode<all>
