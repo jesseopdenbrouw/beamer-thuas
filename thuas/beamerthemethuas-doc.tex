@@ -30,7 +30,6 @@
 %% It needs the ``dutch'' option
 \usepackage[dutch]{babel}
 
-
 %% Show frames, for testing
 %\usepackage{showframe}
 
@@ -73,7 +72,11 @@
 %% Use microtype
 %\usepackage[stretch=10]{microtype}
 
+%% PGFplots
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
 
+%% Nice listings
 \usepackage{listings}
 \lstset{
     language=C,
@@ -81,7 +84,9 @@
     xleftmargin=1em
 }
 
+%% Nice tables, no vertical bars!
 \usepackage{booktabs}
+
 
 %% Set up credentials
 \title{THUAS Beamer Slides}
@@ -269,7 +274,7 @@ Een voetnoot\footnote{Dit is een voetnoot}
 
 Een plaatje (met een \lstinline|\fbox| en \lstinline|\fboxsep=0pt|)
 
-\begin{figure}[!ht]
+\begin{figure}
 \fboxsep=0pt
 \fbox{\includegraphics[scale=1]{thuaslogo}}
 \caption{Dit is een plaatje}
@@ -290,6 +295,31 @@ Aaa & BBB\\
 \bottomrule
 \end{tabular}
 \end{table}
+\end{frame}
+
+\begin{frame}{De normaalverdeling}
+\begin{figure}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm,
+    height=6cm]
+
+%% Plot bell curve
+\addplot [thuasgreen!50!black, mark=none, samples=301, name path=f,domain=-4:4] { exp(-x^2) };
+
+%% Just a path over the x axis
+\path[name path=xaxis] (axis cs:-4,0) -- (axis cs:4,0);
+
+%% Fill the area between x axis and bell curve, from x = -1 to x = 1 (1 sigma)
+\addplot [thick, fill=thuasgreen, fill opacity=0.25]
+              fill between[of=f and xaxis, soft clip={domain=-1:1}];
+        
+%% Draw the 1 sigma from-to line, set text in math mode
+\draw[thuasgreen!50!black,latex-latex] (axis cs:-1,0.1) -- (axis cs:1,0.1) node[midway, above] {$68.26\,\%$};
+
+\end{axis}
+\end{tikzpicture}
+\end{figure}
 \end{frame}
 
 \begin{frame}[fragile]{Gory details...}
