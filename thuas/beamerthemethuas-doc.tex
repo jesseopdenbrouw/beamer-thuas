@@ -1,0 +1,355 @@
+%%
+%%
+%% thuasexample.tex
+%%
+%% Definitions for the beamer layout for
+%%
+%% The Hague University of Applied Sciences (THUAS)
+%%
+%% (c) J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%%
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is J.E.J. op den Brouw
+%%
+
+
+%% Use ``dutch'' as class option
+\documentclass[fleqn,aspectratio=169,dutch]{beamer}
+
+%% Babel is needed for correct translations
+%% It needs the ``dutch'' option
+\usepackage[dutch]{babel}
+
+
+%% Show frames, for testing
+%\usepackage{showframe}
+
+%% The THUAS beamer style
+\usetheme{thuas}
+
+%% Find out what engine we're running...
+\usepackage{iftex}
+
+%% Settings for fonts et al.
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+\usepackage[math-style=TeX]{unicode-math}
+%\usepackage{unicode-math}
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Calibri}
+\defaultfontfeatures{Scale=MatchUppercase}
+\setsansfont{Calibri}
+\setmonofont{Consolas}
+\setmathfont[slash-delimiter=frac]{Cambria Math}
+%% Next messes up the math font, try it, but do not use it!
+%\setmathfont[range=up]{Calibri}
+%\setmathfont[range=it]{Calibri Italic}
+%\setmathfont[range=bfup]{Calibri Bold}
+%\setmathfont[range=bfit]{Calibri Bold Italic}
+\setoperatorfont\normalfont % For log, sin, cos, etc.
+\else
+%%% Set input encoding to UTF-8
+\usepackage[utf8]{inputenc}
+%% T1 encoding
+\usepackage[T1]{fontenc}
+%% Default to helvet
+%\usepackage{helvet}
+%% Math package??
+
+%% Use the Nimbus Mono fonts
+\usepackage{nimbusmono}
+\fi
+
+%% Use microtype
+%\usepackage[stretch=10]{microtype}
+
+
+\usepackage{listings}
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    xleftmargin=1em
+}
+
+\usepackage{booktabs}
+
+%%
+%%
+%%
+\title{THUAS Beamer Slides}
+\subtitle{Subtitel wordt niet weergegeven}
+\author{Jesse op den Brouw}
+\date{\today}
+
+
+\begin{document}
+
+
+%% Title page
+\maketitle
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item Dit is de onofficiële realisatie van slides met het THUAS-thema
+\item Eerst gebruik je de beamer-class: \lstinline|\documentclass{beamer}|
+\item Daarna laadt je de theme met: \lstinline|\usetheme{thuas}|
+\item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
+\item Voorlopig alleen in het Nederlands
+\item De titelpagina is niet conform de regels, maar komt in de buurt
+\item De navigatie-buttons werken nu nog niet
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item De officiële realisatie is met aspect ratio 16:9, dus:
+\begin{itemize}
+\item Gebruik \lstinline|\documentclass[aspectratio=169]{beamer}|
+\end{itemize}
+\item Maar veel beamers werken nog met 4:3, dus:
+\begin{itemize}
+\item Gebruik \lstinline|\documentclass[aspectratio=43]{beamer}|
+\end{itemize}
+\item Er zijn nog andere formaten maar die worden niet ondersteund
+\item Er zijn verschillen in de titelpagina tussen 16:9 en 4:3
+\begin{itemize}
+\item Dat komt o.a.\@ door het plaatsen van het plaatje op de titelpagina
+\end{itemize}
+\item Er zijn verschillen tussen Xe-, Lua- en pdf\LaTeX
+\begin{itemize}
+\item Dat komt o.a.\@ door de vorm en de grootte van de gebruikte fonts
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+Om correct gebruik te maken van het Nederlands, gebruik
+\begin{lstlisting}
+\documentclass[dutch]{beamer}
+\end{lstlisting}
+en
+\begin{lstlisting}
+\usepackage[dutch]{babel}
+\end{lstlisting}
+Dan worden environments als \lstinline|theorem| en \lstinline|proof| van de correcte namen voorzien
+\end{frame}
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item Het standaard lettertype in pdf\LaTeX{} is helvet
+\item Dit kan je uitzetten met \lstinline|\usetheme[nohelvet]{thuas}|
+\item Gebruik voor Xe\LaTeX{} en Lua\LaTeX{} \lstinline|\setmainfont| etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item Subtitel op titelpagina wordt \emph{niet} weergegeven
+\begin{itemize}
+\item Deze subtitel wordt gewoon genegeerd
+\end{itemize}
+\item Subtitels op frames worden \emph{niet} weergegeven
+\begin{itemize}
+\item Deze subtitels worden gewoon genegeerd
+\end{itemize}
+\item De inhoud van een slide wordt \emph{niet} gecentreerd
+\begin{itemize}
+\item De huisstijl is zo
+\end{itemize}
+\item Wil je toch gecentreerde slides, gebruik dan \lstinline|\usetheme[c]{thuas}|
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Formules kunnen ook}
+\begin{itemize}
+\item The formules zijn:
+\begin{align*}
+\left|F(x)\right|^b_a &= \int_a^b x^2 + 2x + 1 \, \mathsf{d} x \\
+\zeta (s) &= \sum_{n=1}^\infty \dfrac{1}{n^{\;\!s}} \\
+M&\approx\frac{\pi}{4}\left(\frac{2d}{\lambda_o}\right)^2\left(\mathrm{NA}\right)^2
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Formules kunnen ook}
+Nu zonder itemize
+\begin{equation*}
+O=\pi r^2
+\end{equation*}
+\begin{multline*}  
+K=\displaystyle{\frac{1}{2}m_1 L_1^2 \dot{\theta_1}^2+\frac{1}{2} m_2[L_1^2 \dot{\theta_1}^2+L_2^2 \dot{\theta_2}^2+2 L_1 L_2 \dot{\theta_1}\dot{\theta_2}\cos(\theta_1-\theta_2)]} \\
+ \displaystyle{+\frac{1}{2}m_3[L_1^2 \dot{\theta_1}^2+L_2^2 \dot{\theta_2}^2+L_3^2+ \dot{\theta_3}^2+2 L_1 L_2 \dot{\theta_1}\dot{\theta_2}\cos(\theta_1-\theta_2)}
+\end{multline*}
+\begin{equation*}
+\mathrm{e}^{\, \mathrm{j}\alpha} = \cos \alpha + \mathrm{j} \sin \alpha
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Voorbeeld met een itemize}
+Voorbeeld met een \texttt{itemize} en gaat tot drie niveaus diep.
+\begin{itemize}
+\item item
+\begin{itemize}
+\item sub item
+\begin{itemize}
+\item sub sub item
+\end{itemize}
+\end{itemize}
+\item item
+\end{itemize}
+En weer wat tekst
+\end{frame}
+
+\begin{frame}{Voorbeeld met een enumerate}
+Voorbeeld met een \texttt{enumerate} en gaat tot drie niveaus diep.
+\begin{enumerate}
+\item een
+\item twee
+\begin{enumerate}
+\item een
+\item twee
+\begin{enumerate}
+\item een
+\item twee
+\end{enumerate}
+\end{enumerate}
+\item drie
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Voorbeeld van een description}
+De label wordt vet en rechts uitgelijnd afgedrukt
+
+De label kan ongeveer 9 karakters bevatten
+
+Daarna wordt er ingesprongen
+\begin{description}
+\item[123456789] Dit is een hele lange tekst en ik denk dat deze zin over twee regels verspreid zal zijn
+\item[label] description
+\end{description}
+\end{frame}
+
+%% A frame with a listing NEEDS fragile
+\begin{frame}[fragile]{Een frame met code}
+Een frame met daarin code met \texttt{lstlistings} moet getypeerd worden met \texttt{fragile}, anders werkt het niet
+
+\begin{lstlisting}
+\begin{frame}[fragile]{Titel}
+\end{lstlisting}
+
+De frame wordt in een bestand \lstinline|\jobname.vrb| geplaatst en daarna ingelezen
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(void) {
+    printf("Thuas Beamer Slides!\n");
+}
+\end{lstlisting}
+
+Niet getest met \lstinline|minted|
+\end{frame}
+
+\begin{frame}[fragile]{Plaatjes en voetnoot}
+Een voetnoot\footnote{Dit is een voetnoot}
+
+Een voetnoot\footnote{Dit is een voetnoot}
+
+Een plaatje (met een \lstinline|\fbox| en \lstinline|\fboxsep=0pt|)
+
+\begin{figure}[!ht]
+\fboxsep=0pt
+\fbox{\includegraphics[scale=1]{thuaslogo}}
+\caption{Dit is een plaatje}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Tabellen}
+Een tabel kan ook (deze is met \texttt{booktabs})
+
+\begin{table}[!ht]
+\caption{Een tabel}
+\begin{tabular}{ll}
+\toprule
+Iets & En nog iets\\
+\midrule
+Aaa & BBB\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Gory details...}
+The theme package bestaat uit
+\begin{itemize}
+\item \texttt{beamerthemethuas.sty}
+\begin{itemize}
+\item Deze moet je aanroepen met \lstinline|\usetheme{thuas}|
+\end{itemize}
+\item \texttt{beamercolorthemethuas.sty}
+\begin{itemize}
+\item Hierin zijn de kleuren gedefinieerd
+\end{itemize}
+\item \texttt{beamerinnerthemethuas.sty}
+\begin{itemize}
+\item Hierin is de opmaak van de inhoud gedefinieerd (ook de titelpagina)
+\end{itemize}
+\item \texttt{beamerouterthemethuas.sty}
+\begin{itemize}
+\item Hierin is de opmaak \emph{rond} de inhoud gedefinieerd (header, footer)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame} 
+\frametitle{There Is No Largest Prime Number} 
+\begin{theorem}
+There is no largest prime number.
+\end{theorem} 
+\begin{proof}
+\begin{enumerate} 
+\item<1-| alert@1> Suppose $p$ were the largest prime number. 
+\item<2-> Let $q$ be the product of the first $p$ numbers. 
+\item<3-> Then $q+1$ is not divisible by any of them. 
+\item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime
+number not in the first $p$ numbers.
+\end{enumerate}
+\end{proof}
+\end{frame}
+
+
+%%% Test slide van Jesse
+%\newdimen\efkes\efkes=12.80cm
+%\makeatletter
+%\begin{frame}{test slide van Jesse}
+%
+%%% Test if babel loaded
+%\ifdefined\bbl@loaded
+%\bbl@loaded
+%\else
+%Babel not loaded
+%\fi
+%
+%%% translater always loaded by beamer
+%\trans@languages
+%
+%%% 12.80cm in points
+%\the\efkes
+%
+%\end{frame}
+%\makeatother
+
+\end{document}
