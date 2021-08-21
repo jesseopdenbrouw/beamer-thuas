@@ -22,17 +22,22 @@
 %% The Current Maintainer of this work is J.E.J. op den Brouw
 %%
 
+%% Version
+\newcommand{\beamerthemethuasversion}{v1.0}
+\newcommand{\beamerthemethuasdate}{2021/08/21}
+
 %\NeedsTeXFormat{LaTeX2e}[2021-06-01]
-\ProvidesPackage{beamerthemethuas}[2021/08/20 V1.0 The Hague University of Applied Sciences theme]
-\typeout{The Hague University of Applied Sciences theme V1.0 (JodB, 2021)}
+\ProvidesPackage{beamerthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences theme]
+\typeout{The Hague University of Applied Sciences theme \beamerthemethuasversion\space (JodB, 2021)}
 
 %% Do not center
 \beamer@centeredfalse
 
+%% Load Helvet or not
 \newif\ifbeamerthemethuas@helvet
 \beamerthemethuas@helvettrue
 
-%% Options `c' and `t'
+%% Options `c', `t' and `nohelvet'
 \DeclareOption{t}{\beamer@centeredfalse}
 \DeclareOption{c}{\beamer@centeredtrue}
 \DeclareOption{nohelvet}{\beamerthemethuas@helvetfalse}
@@ -41,25 +46,25 @@
 \ProcessOptions\relax
 
 %% Check if babel is loaded
-\@ifpackageloaded{babel}{}{\PackageWarning{beamerthemethuas}{Babel not loaded prior to loading theme!}}
-
-%% Version
-\newcommand{\beamerthemethuasversion}{v1.0}
+\@ifpackageloaded{babel}{}{%
+  \PackageWarning{beamerthemethuas}{Babel not loaded prior to loading theme!}%
+}
 
 \mode<presentation>
 
-% Requirement
+%% Requirement
 \RequirePackage{tikz}
-% Helvetica, looks like Arial
+%% Helvetica, looks like Arial
 \ifbeamerthemethuas@helvet
 \RequirePackage{helvet}
 \fi
 
-% Load settings
+%% Load settings
 \useinnertheme{thuas}
 \useoutertheme{thuas}
 \usecolortheme{thuas}
 
+%% Simple last slide of the presentation
 \newcommand{\beamerthemethuasbackframe}{%
   \setbeamercolor{background canvas}{bg=thuasgreen}
   \setbeamertemplate{footline}{}
@@ -71,5 +76,8 @@
     \end{tikzpicture}
   \end{frame}
 }
+
+%% Just a nice touch...
+\hypersetup{pdfcreator={LaTeX with THUAS Beamer theme}}
 
 \mode<all>
