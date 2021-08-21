@@ -33,6 +33,7 @@
 
 %% Beamer fonts et al.
 \setbeamerfont*{title}{series=\bfseries,size=\LARGE}
+
 \setbeamerfont*{frametitle}{series=\bfseries,size=\Large}
 
 \setbeamertemplate{itemize item}{\color{thuasgray}$\bullet$}
@@ -48,6 +49,10 @@
 \setbeamerfont*{itemize/enumerate subsubbody}{size=\scriptsize}
 
 \setbeamerfont*{page number in head/foot}{size=\small}
+
+\setbeamertemplate{caption}[numbered]
+
+\setbeamerfont*{description item}{series=\bfseries,size=\normalsize}
 
 % More room between sole lines and list env.
 %https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
@@ -82,38 +87,42 @@
 {
     \ifxetex
       \begin{tikzpicture}
-%        \useasboundingbox (0.5,0) [yshift=1.2cm] rectangle (\the\paperwidth,\the\tph);
-        \useasboundingbox (-0.44\paperwidth,-1) [yshift=-2.8cm] rectangle (\the\paperwidth,\the\tph);
-        \node at (0,0) {\includegraphics[width=0.95\paperwidth]{thuasfront.pdf}};
+        \useasboundingbox (-0.435\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+        \node at (0,0) {\includegraphics[width=0.82\paperwidth]{thuasfront.pdf}};
       \end{tikzpicture}
     \else
       \begin{tikzpicture}
-        \ifdim\beamer@paperwidth<12.81cm
-          \useasboundingbox (0.5,0) [yshift=0cm] rectangle (\the\paperwidth,\the\tph);
-          \includegraphics[width=0.95\paperwidth]{thuasfront.pdf};
+        \ifdim\beamer@paperwidth<12.81cm\relax
+          \useasboundingbox (-0.05,0) [yshift=0cm] rectangle (\the\paperwidth,\the\tph);
+%          \fbox{%
+            \includegraphics[width=0.82\paperwidth]{thuasfront.pdf}%
+%          }%
         \else
-          \useasboundingbox (0.5,0) [yshift=1.2cm] rectangle (\the\paperwidth,\the\tph);
-          \includegraphics[width=0.95\paperwidth]{thuasfront.pdf};
+          \useasboundingbox (-0.4,0) [yshift=1.2cm] rectangle (\the\paperwidth,\the\tph);
+%          \fbox{%
+           \includegraphics[width=0.82\paperwidth]{thuasfront.pdf}%
+%           }%
         \fi
       \end{tikzpicture}
     \fi
+    %% Very dirty hack to test if we use 16:9 or 4:3
     \ifdim\beamer@paperwidth<12.81cm
       \ifxetex
         \vskip-1.5cm%
         \begin{beamercolorbox}[wd=12cm,leftskip=0.95cm,sep=1pt,#1]{title page header}%
-          \usebeamerfont{title}\inserttitle\par%
+          \usebeamerfont{title}\inserttitle%
         \end{beamercolorbox}%
         \vskip0.25cm%
         \begin{beamercolorbox}[wd=12cm,leftskip=0.95cm,sep=1pt,#1]{author}%
           \usebeamerfont{author}\insertauthor%
         \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.95cm,sep=1pt,#1]{date}
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.95cm,sep=1pt,#1]{date}%
           \usebeamerfont{author}\insertdate%
         \end{beamercolorbox}%
       \else
         \vskip-0.5cm%
         \begin{beamercolorbox}[wd=12cm,leftskip=0.85cm,sep=1pt,#1]{title page header}%
-          \usebeamerfont{title}\inserttitle\par%
+          \usebeamerfont{title}\inserttitle%
         \end{beamercolorbox}%
         \vskip0.25cm%
         \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{author}%
@@ -126,7 +135,7 @@
     \else
       \vskip-1.5cm%
       \begin{beamercolorbox}[wd=12cm,leftskip=0.75cm,sep=1pt,#1]{title page header}%
-        \usebeamerfont{title}\inserttitle\par%
+        \usebeamerfont{title}\inserttitle%
       \end{beamercolorbox}%
       \vskip0.25cm%
       \begin{beamercolorbox}[wd=12cm,leftskip=0.8cm,sep=1pt,#1]{author}%

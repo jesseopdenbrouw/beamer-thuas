@@ -22,23 +22,42 @@
 %% The Current Maintainer of this work is J.E.J. op den Brouw
 %%
 
+%\NeedsTeXFormat{LaTeX2e}[2021-06-01]
 \ProvidesPackage{beamerthemethuas}[2021/08/20 V1.0 The Hague University of Applied Sciences theme]
 \typeout{The Hague University of Applied Sciences theme V1.0 (JodB, 2021)}
+
+%% Do not center
+\beamer@centeredfalse
+
+\newif\ifbeamerthemethuas@helvet
+\beamerthemethuas@helvettrue
+
+%% Options `c' and `t'
+\DeclareOption{t}{\beamer@centeredfalse}
+\DeclareOption{c}{\beamer@centeredtrue}
+\DeclareOption{nohelvet}{\beamerthemethuas@helvetfalse}
+
+%% Process options, ignore unknown
+\ProcessOptions\relax
+
+%% Check if babel is loaded
+\@ifpackageloaded{babel}{}{\PackageWarning{beamerthemethuas}{Babel not loaded prior to loading theme!}}
+
+%% Version
+\newcommand{\beamerthemethuasversion}{v1.0}
 
 \mode<presentation>
 
 % Requirement
 \RequirePackage{tikz}
 % Helvetica, looks like Arial
+\ifbeamerthemethuas@helvet
 \RequirePackage{helvet}
-
+\fi
 
 % Load settings
 \useinnertheme{thuas}
 \useoutertheme{thuas}
 \usecolortheme{thuas}
-
-%% Do not center
-\beamer@centeredfalse
 
 \mode<all>
