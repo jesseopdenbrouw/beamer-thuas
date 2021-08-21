@@ -60,4 +60,16 @@
 \useoutertheme{thuas}
 \usecolortheme{thuas}
 
+\newcommand{\beamerthemethuasbackframe}{%
+  \setbeamercolor{background canvas}{bg=thuasgreen}
+  \setbeamertemplate{footline}{}
+  %\setbeamercolor{normal text}{fg=white} % does not work?
+  \begin{frame}
+    \begin{tikzpicture}
+      \useasboundingbox (-0.435\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+      \node at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
+    \end{tikzpicture}
+  \end{frame}
+}
+
 \mode<all>
