@@ -45,9 +45,10 @@
 \usepackage[math-style=TeX]{unicode-math}
 %\usepackage{unicode-math}
 \usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{Calibri}
+\setmainfont[Ligatures=TeX]{Arial}
 \defaultfontfeatures{Scale=MatchUppercase}
-\setsansfont{Calibri}
+\setsansfont[BoldFont={Arial Black}]{Arial}
+%\setsansfont{Arial}
 \setmonofont{Consolas}
 \setmathfont[slash-delimiter=frac]{Cambria Math}
 %% Next messes up the math font, try it, but do not use it!
@@ -164,8 +165,9 @@ Dan worden environments als \lstinline|theorem| en \lstinline|proof| van de corr
 \item De inhoud van een slide wordt \emph{niet} gecentreerd
 \begin{itemize}
 \item De huisstijl is zo
-\end{itemize}
 \item Wil je toch gecentreerde slides, gebruik dan \lstinline|\usetheme[c]{thuas}|
+\end{itemize}
+\item Maak een allerlaatste slide met \lstinline|\beamerthemethuasbackframe|
 \end{itemize}
 \end{frame}
 
@@ -351,5 +353,7 @@ number not in the first $p$ numbers.
 %
 %\end{frame}
 %\makeatother
+
+\beamerthemethuasbackframe
 
 \end{document}
