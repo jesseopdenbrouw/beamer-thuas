@@ -33,41 +33,8 @@
 %% Show frames, for testing
 %\usepackage{showframe}
 
-%% The THUAS beamer style
+%% The THUAS beamer style, loads the correct fonts
 \usetheme{thuas}
-
-%% Find out what engine we're running...
-\usepackage{iftex}
-
-%% Settings for fonts et al.
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
-\usepackage[math-style=TeX]{unicode-math}
-%\usepackage{unicode-math}
-\usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{Arial}
-\defaultfontfeatures{Scale=MatchUppercase}
-\setsansfont[BoldFont={Arial Black}]{Arial}
-%\setsansfont{Arial}
-\setmonofont{Consolas}
-\setmathfont[slash-delimiter=frac]{Cambria Math}
-%% Next messes up the math font, try it, but do not use it!
-%\setmathfont[range=up]{Calibri}
-%\setmathfont[range=it]{Calibri Italic}
-%\setmathfont[range=bfup]{Calibri Bold}
-%\setmathfont[range=bfit]{Calibri Bold Italic}
-\setoperatorfont\normalfont % For log, sin, cos, etc.
-\else
-%%% Set input encoding to UTF-8
-\usepackage[utf8]{inputenc}
-%% T1 encoding
-\usepackage[T1]{fontenc}
-%% Default to helvet
-%\usepackage{helvet}
-%% Math package??
-
-%% Use the Nimbus Mono fonts
-\usepackage{nimbusmono}
-\fi
 
 %% Use microtype
 %\usepackage[stretch=10]{microtype}
@@ -75,6 +42,9 @@
 %% PGFplots
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=1.3}
+
 
 %% Nice listings
 \usepackage{listings}
@@ -87,6 +57,8 @@
 %% Nice tables, no vertical bars!
 \usepackage{booktabs}
 
+%% Typeset quantities
+%\usepackage{siunitx}
 
 %% Set up credentials
 \title{THUAS Beamer Slides}
@@ -145,13 +117,29 @@ en
 \usepackage[dutch]{babel}
 \end{lstlisting}
 Dan worden environments als \lstinline|theorem| en \lstinline|proof| van de correcte namen voorzien
+
+\alert{TODO}: automatisch laden van \lstinline|babel| met \lstinline|dutch| of \lstinline|english|
 \end{frame}
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
+Xe\LaTeX{} en Lua\LaTeX:
 \begin{itemize}
-\item Het standaard lettertype in pdf\LaTeX{} is helvet
-\item Dit kan je uitzetten met \lstinline|\usetheme[nohelvet]{thuas}|
-\item Gebruik voor Xe\LaTeX{} en Lua\LaTeX{} \lstinline|\setmainfont| etc.
+\item Het standaard font is Arial voor lopende tekst en Arial Black voor titels
+\item Het standaard font voor formules is Cambria Math
+\item Het standaard font voor programmacode is Consolas
+\item Deze fonts worden automatisch geladen
+\item Wil je andere fonts gebruiken, gebruik dan \lstinline|\usetheme[vanilla]{thuas}|
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+pdf\LaTeX{}:
+\begin{itemize}
+\item Het standaard font is Helvet voor lopende tekst en Helvet/bold voor titels
+\item Het standaard font voor formules is Libertinus
+\item Het standaard font voor programmacode is Nimbus Mono
+\item Deze fonts worden automatisch geladen
+\item Wil je andere fonts gebruiken, gebruik dan \lstinline|\usetheme[vanilla]{thuas}|
 \end{itemize}
 \end{frame}
 
@@ -174,12 +162,27 @@ Dan worden environments als \lstinline|theorem| en \lstinline|proof| van de corr
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item Als je handouts wilt maken, gebruik dan de \lstinline|handou| optie
+\begin{itemize}
+\item Gebruik\lstinline|\documentclass[handout]{beamer}|
+\item Dit wordt door \lstinline|beamer| ondersteund
+\end{itemize}
+\item Als je het totaal aantal slides wilt afdrukken
+\begin{itemize}
+\item Gebruik \lstinline|\usetheme[numpages{thuas}|
+\item Werkt niet lekker met voetnoten
+\end{itemize}
+\end{itemize}
+\end{frame}
+
 \begin{frame}
 \frametitle{Formules kunnen ook}
 \begin{itemize}
-\item The formules zijn:
+\item De formules zijn:
 \begin{align*}
-\left|F(x)\right|^b_a &= \int_a^b x^2 + 2x + 1 \, \mathsf{d} x \\
+\left|F(x)\right|^b_a &= \int_a^b x^2 + 2x + 1 \, \mathrm{d} x \\
 \zeta (s) &= \sum_{n=1}^\infty \dfrac{1}{n^{\;\!s}} \\
 M&\approx\frac{\pi}{4}\left(\frac{2d}{\lambda_o}\right)^2\left(\mathrm{NA}\right)^2
 \end{align*}
@@ -189,7 +192,7 @@ M&\approx\frac{\pi}{4}\left(\frac{2d}{\lambda_o}\right)^2\left(\mathrm{NA}\right
 \begin{frame}{Formules kunnen ook}
 Nu zonder itemize
 \begin{equation*}
-O=\pi r^2
+\tan \alpha = \dfrac{\sin \alpha}{\cos \alpha} \qquad \tan x = \sin x / \cos x
 \end{equation*}
 \begin{multline*}  
 K=\displaystyle{\frac{1}{2}m_1 L_1^2 \dot{\theta_1}^2+\frac{1}{2} m_2[L_1^2 \dot{\theta_1}^2+L_2^2 \dot{\theta_2}^2+2 L_1 L_2 \dot{\theta_1}\dot{\theta_2}\cos(\theta_1-\theta_2)]} \\
@@ -237,11 +240,11 @@ Voorbeeld met een \texttt{enumerate} en gaat tot drie niveaus diep.
 \begin{frame}{Voorbeeld van een description}
 De label wordt vet en rechts uitgelijnd afgedrukt
 
-De label kan ongeveer 9 karakters bevatten
+De label kan ongeveer 8 karakters bevatten
 
 Daarna wordt er ingesprongen
 \begin{description}
-\item[123456789] Dit is een hele lange tekst en ik denk dat deze zin over twee regels verspreid zal zijn
+\item[12345678] Dit is een hele lange tekst en ik denk dat deze zin over twee regels verspreid zal zijn
 \item[label] description
 \end{description}
 \end{frame}
@@ -267,7 +270,7 @@ int main(void) {
 Niet getest met \lstinline|minted|
 \end{frame}
 
-\begin{frame}[fragile]{Plaatjes en voetnoot}
+\begin{frame}[fragile]{Plaatje en voetnoot}
 Een voetnoot\footnote{Dit is een voetnoot}
 
 Een voetnoot\footnote{Dit is een voetnoot}
@@ -276,7 +279,7 @@ Een plaatje (met een \lstinline|\fbox| en \lstinline|\fboxsep=0pt|)
 
 \begin{figure}
 \fboxsep=0pt
-\fbox{\includegraphics[scale=1]{thuaslogo}}
+\fbox{\includegraphics[scale=0.75]{beamerthemethuaslogo}}
 \caption{Dit is een plaatje}
 \end{figure}
 
@@ -287,22 +290,29 @@ Een tabel kan ook (deze is met \texttt{booktabs})
 
 \begin{table}[!ht]
 \caption{Een tabel}
-\begin{tabular}{ll}
+\begin{tabular}{llcc}
 \toprule
-Iets & En nog iets\\
+Iets & En nog iets & Bla & Bla \\
 \midrule
-Aaa & BBB\\
+Aaa & Bbb & 1.24 & 2.54 \\
+Aaa & Bbb & 1.24 & 2.54 \\
+Aaa & Bbb & 1.24 & 2.54 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+Let op: \texttt{siunitx} typesets in math-mode!
 \end{frame}
 
-\begin{frame}{De normaalverdeling}
+\begin{frame}{De normaalverdeling met \texttt{pgfplots} (voor Kees)}
 \begin{figure}
 \begin{tikzpicture}
 \begin{axis}[
-    width=12cm,
-    height=6cm]
+    width=0.7\paperwidth,
+    height=0.65\paperheight,
+    xtick={-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0}, 
+    xticklabels={$-4\sigma$, $-3\sigma$, $-2\sigma$, $-\sigma$, $0$, $\sigma$, $2\sigma$, $3\sigma$, $4\sigma$}
+]
 
 %% Plot bell curve
 \addplot [thuasgreen!50!black, mark=none, samples=301, name path=f,domain=-4:4] { exp(-x^2) };
@@ -317,6 +327,20 @@ Aaa & BBB\\
 %% Draw the 1 sigma from-to line, set text in math mode
 \draw[thuasgreen!50!black,latex-latex] (axis cs:-1,0.1) -- (axis cs:1,0.1) node[midway, above] {$68.26\,\%$};
 
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Een 3D-plaatje met \texttt{pgfplots}}
+\begin{figure}
+\begin{tikzpicture} 
+\begin{axis}[
+   colorbar,
+%   title={$\exp(-x^2-y^2)$},
+   width=0.45\paperwidth,
+]
+  \addplot3[surf,shader=faceted interp,samples=31,domain=-2:2] {exp(-x^2-y^2)};
 \end{axis}
 \end{tikzpicture}
 \end{figure}
