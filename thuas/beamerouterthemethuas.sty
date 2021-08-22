@@ -39,10 +39,13 @@
     \leavevmode%
     \hbox{%
       \begin{beamercolorbox}[wd=0.95\paperwidth,ht=1ex,dp=4ex]{section in head/foot}%
-        \makebox[2em][r]{\raisebox{1.3em}{\insertframenumber}}%
-%        \makebox[3.2em][r]{\raisebox{1.3em}{\insertframenumber/\inserttotalframenumber}}%
+         \ifbeamerthemethuas@numpages
+            \makebox[3.2em][r]{\raisebox{1.3em}{\insertframenumber\,/\,\inserttotalframenumber}}%
+         \else
+            \makebox[2em][r]{\raisebox{1.3em}{\insertframenumber}}%
+         \fi
         \hfill%
-        \raisebox{1.3em}{\includegraphics[scale=0.39]{thuaslogo}}\hspace*{-2ex}%
+        \raisebox{1.3em}{\includegraphics[scale=0.39]{beamerthemethuaslogo}}\hspace*{-2ex}%
       \end{beamercolorbox}}%
     \vskip0pt%
   \fi
