@@ -33,14 +33,20 @@
 %% Do not center
 \beamer@centeredfalse
 
-%% Load Helvet or not
-\newif\ifbeamerthemethuas@helvet
-\beamerthemethuas@helvettrue
+%% Full or vanilla
+\newif\ifbeamerthemethuas@full
+\beamerthemethuas@fulltrue
 
-%% Options `c', `t' and `nohelvet'
+%% Use number of pages
+\newif\ifbeamerthemethuas@numpages
+\beamerthemethuas@numpagesfalse
+
+%% Options `c', `t', `full', `vanilla'
 \DeclareOption{t}{\beamer@centeredfalse}
 \DeclareOption{c}{\beamer@centeredtrue}
-\DeclareOption{nohelvet}{\beamerthemethuas@helvetfalse}
+\DeclareOption{full}{\beamerthemethuas@fulltrue}
+\DeclareOption{vanilla}{\beamerthemethuas@fullfalse}
+\DeclareOption{numpages}{\beamerthemethuas@numpagestrue}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
@@ -54,15 +60,45 @@
 
 %% Requirement
 \RequirePackage{tikz}
-%% Helvetica, looks like Arial
-\ifbeamerthemethuas@helvet
-\RequirePackage{helvet}
-\fi
 
 %% Load settings
 \useinnertheme{thuas}
 \useoutertheme{thuas}
 \usecolortheme{thuas}
+
+%% THIS MUST BE IN A SEPARATE FONT FILE
+%% Check if we must load the fonts
+\ifbeamerthemethuas@full
+%% Find out what engine we're running...
+\usepackage{iftex}
+%% Settings for fonts et al.
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+\usepackage[math-style=TeX]{unicode-math}
+%\usepackage{unicode-math}
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Arial}
+\defaultfontfeatures{Scale=MatchUppercase}
+\setsansfont[BoldFont={Arial Black}]{Arial}
+\setmonofont{Consolas}
+%\setmathfont[slash-delimiter=frac]{Cambria Math}
+\setmathfont{Cambria Math}
+%% Needed to get \mathrm{e} typeset correct
+\setmathrm{Cambria Math}
+\setoperatorfont\normalfont % For log, sin, cos, etc.
+\else
+%%% Set input encoding to UTF-8
+\usepackage[utf8]{inputenc}
+%% T1 encoding
+\usepackage[T1]{fontenc}
+% Math package from Charter
+%\usepackage{libertinus}
+\usefonttheme[onlymath]{serif}
+%%% Default to helvet
+\usepackage{helvet}
+%% Use the Nimbus Mono fonts
+\usepackage{nimbusmono}
+\fi
+\fi
 
 %% Simple last slide of the presentation
 \newcommand{\beamerthemethuasbackframe}{%
