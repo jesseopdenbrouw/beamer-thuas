@@ -49,12 +49,22 @@
 \newif\ifbeamerthemethuas@numpages
 \beamerthemethuas@numpagesfalse
 
-%% Options `c', `t', `full', `vanilla'
+%% Navigation is default off
+\newcommand{\beamerthemethuasnav}{}
+
+%% Options:
+%% c: centered slides
+%% t: top-aligned slides
+%% full: load fonts
+%% vanilla: don't load fonts
+%% numpages: inject number of slides with slide number
+%% nav: enable navigation
 \DeclareOption{t}{\beamer@centeredfalse}
 \DeclareOption{c}{\beamer@centeredtrue}
 \DeclareOption{full}{\beamerthemethuas@fulltrue}
 \DeclareOption{vanilla}{\beamerthemethuas@fullfalse}
 \DeclareOption{numpages}{\beamerthemethuas@numpagestrue}
+\DeclareOption{nav}{\renewcommand{\beamerthemethuasnav}{nav}}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
@@ -71,7 +81,7 @@
 
 %% Load settings
 \useinnertheme{thuas}
-\useoutertheme{thuas}
+\useoutertheme[\beamerthemethuasnav]{thuas}
 \usecolortheme{thuas}
 
 %% THIS MUST BE IN A SEPARATE FONT FILE
@@ -118,9 +128,26 @@
   \setbeamertemplate{footline}{}
   %\setbeamercolor{normal text}{fg=white} % does not work?
   \begin{frame}
+    \transduration{2}
     \begin{tikzpicture}
-      \useasboundingbox (-0.435\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-      \node at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
+      \useasboundingbox (-.2\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+      \node[right] at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
+    \end{tikzpicture}
+  \end{frame}
+  \begin{frame}
+    \transduration{2}
+    \begin{tikzpicture}
+      \useasboundingbox (-0.2\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+      \node[right] at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
+      \node[right] at (0,-1) {\color{white}\bfseries\Large\selectfont YOU. US. THE WORLD.};
+    \end{tikzpicture}
+  \end{frame}
+  \begin{frame}
+    \begin{tikzpicture}
+      \useasboundingbox (-0.2\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+      \node[right] at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
+      \node[right] at (0,-1) {\color{white}\bfseries\Large\selectfont YOU. US. THE WORLD.};
+      \node[right] at (0,-2) {\color{white}\bfseries\normalsize\selectfont \LaTeX{} with Beamer class.};
     \end{tikzpicture}
   \end{frame}
 }
