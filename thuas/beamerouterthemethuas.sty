@@ -38,13 +38,29 @@
 %% No navigation, TODO
 \setbeamertemplate{navigation symbols}{}
 
+\DeclareOption{nav}{%
+  %% The header, navigation or not
+  \defbeamertemplate*{headline}{thuas}{%
+    \hfill\usebeamercolor[fg]{navigation symbols dimmed}%
+    \insertslidenavigationsymbol%
+    \insertframenavigationsymbol%
+    \insertsectionnavigationsymbol%
+    \insertsubsectionnavigationsymbol%
+    \insertdocnavigationsymbol%
+    \insertbackfindforwardnavigationsymbol%
+    \hspace*{2ex}%
+  }
+}
+
+\ProcessOptions\relax
+
 %% The footer of the slide
-\defbeamertemplate*{footline}{thuas}[1][]
+\defbeamertemplate*{footline}{thuas}
 {
   \usebeamercolor{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
-  \ifnum \theframenumber>1\relax%
-    \leavevmode%
+  \ifnum \theframenumber>1\relax
+    \leavevmode
     \hbox{%
       \begin{beamercolorbox}[wd=0.95\paperwidth,ht=1ex,dp=4ex]{section in head/foot}%
          \ifbeamerthemethuas@numpages
@@ -52,20 +68,20 @@
          \else
             \makebox[2em][r]{\raisebox{1.3em}{\insertframenumber}}%
          \fi
-        \hfill%
+        \hfill
         \raisebox{1.3em}{\includegraphics[scale=0.39]{beamerthemethuaslogo}}\hspace*{-2ex}%
       \end{beamercolorbox}}%
     \vskip0pt%
   \fi
 }
 
-%% Frame title
+% Frame title
 \defbeamertemplate*{frametitle}{thuas}[1][]
 {
 \vskip1cm%
   \begin{beamercolorbox}[wd=\paperwidth,ht=0cm]{frametitle} 
   \begin{tikzpicture}
-  \useasboundingbox[fill=white] (0.0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \useasboundingbox[] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 %  \ifx\insertframesubtitle\@empty%
       {\node[anchor=west] at (.75,.61){$\strut$\insertframetitle};}
 %      \else%
