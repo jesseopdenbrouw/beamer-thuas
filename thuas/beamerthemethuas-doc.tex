@@ -21,7 +21,14 @@
 %% 
 %% The Current Maintainer of this work is J.E.J. op den Brouw
 %%
-
+%% This work consists of the files
+%%   beamerthemethuas.sty
+%%   beamerinnerthemethuas.sty
+%%   beamerouterthemethuas.sty
+%%   beamercolorthemethuas.sty
+%%   beamerthemethuas-doc.tex
+%% and the derived file beamerthemethuas-doc.pdf
+%%
 
 %% Use ``dutch'' as class option
 \documentclass[fleqn,aspectratio=169,dutch]{beamer}
@@ -51,7 +58,8 @@
 \lstset{
     language=C,
     basicstyle=\ttfamily\small,
-    xleftmargin=1em
+    xleftmargin=1em,
+%    escapeinside={(*}{*)}
 }
 
 %% Nice tables, no vertical bars!
@@ -77,7 +85,7 @@
 \begin{itemize}
 \item Dit is de onofficiële realisatie van slides met het THUAS-thema
 \item Eerst gebruik je de beamer-class: \lstinline|\documentclass{beamer}|
-\item Daarna laadt je de theme met: \lstinline|\usetheme{thuas}|
+\item Daarna laadt je de theme met: \lstinline|\usetheme[|\emph{opties}\lstinline|]{thuas}|
 \item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
 \item Voorlopig alleen in het Nederlands
 \item De titelpagina is niet conform de regels, maar komt in de buurt
@@ -164,14 +172,14 @@ pdf\LaTeX{}:
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
-\item Als je handouts wilt maken, gebruik dan de \lstinline|handou| optie
+\item Als je handouts wilt maken, gebruik dan de \lstinline|handout| optie
 \begin{itemize}
 \item Gebruik\lstinline|\documentclass[handout]{beamer}|
 \item Dit wordt door \lstinline|beamer| ondersteund
 \end{itemize}
-\item Als je het totaal aantal slides wilt afdrukken
+\item Als je het totaal aantal slides naast het slidenummer wil gebruiken
 \begin{itemize}
-\item Gebruik \lstinline|\usetheme[numpages{thuas}|
+\item Gebruik \lstinline|\usetheme[numpages]{thuas}|
 \item Werkt niet lekker met voetnoten
 \end{itemize}
 \end{itemize}
@@ -192,7 +200,7 @@ M&\approx\frac{\pi}{4}\left(\frac{2d}{\lambda_o}\right)^2\left(\mathrm{NA}\right
 \begin{frame}{Formules kunnen ook}
 Nu zonder itemize
 \begin{equation*}
-\tan \alpha = \dfrac{\sin \alpha}{\cos \alpha} \qquad \tan x = \sin x / \cos x
+\tan \alpha = \dfrac{\sin \alpha}{\cos \alpha} \qquad \tan x = \sin x \, / \cos x
 \end{equation*}
 \begin{multline*}  
 K=\displaystyle{\frac{1}{2}m_1 L_1^2 \dot{\theta_1}^2+\frac{1}{2} m_2[L_1^2 \dot{\theta_1}^2+L_2^2 \dot{\theta_2}^2+2 L_1 L_2 \dot{\theta_1}\dot{\theta_2}\cos(\theta_1-\theta_2)]} \\
@@ -311,7 +319,7 @@ Let op: \texttt{siunitx} typesets in math-mode!
     width=0.7\paperwidth,
     height=0.65\paperheight,
     xtick={-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0}, 
-    xticklabels={$-4\sigma$, $-3\sigma$, $-2\sigma$, $-\sigma$, $0$, $\sigma$, $2\sigma$, $3\sigma$, $4\sigma$}
+    xticklabels={$-4\sigma$, $-3\sigma$, $-2\sigma$, $-1\sigma$, $0$, $1\sigma$, $2\sigma$, $3\sigma$, $4\sigma$}
 ]
 
 %% Plot bell curve
