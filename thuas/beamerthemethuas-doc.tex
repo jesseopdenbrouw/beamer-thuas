@@ -41,7 +41,7 @@
 %\usepackage{showframe}
 
 %% The THUAS beamer style, loads the correct fonts
-\usetheme{thuas}
+\usetheme[nav]{thuas}
 
 %% Use microtype
 %\usepackage[stretch=10]{microtype}
@@ -51,7 +51,6 @@
 \usepgfplotslibrary{fillbetween}
 \usepgfplotslibrary{patchplots}
 \pgfplotsset{compat=1.3}
-
 
 %% Nice listings
 \usepackage{listings}
@@ -65,7 +64,7 @@
 %% Nice tables, no vertical bars!
 \usepackage{booktabs}
 
-%% Typeset quantities
+%% Typeset quantities in math mode
 %\usepackage{siunitx}
 
 %% Set up credentials
@@ -74,9 +73,10 @@
 \author{Jesse op den Brouw}
 \date{\today}
 
-
+%%
+%%
+%%
 \begin{document}
-
 
 %% Title page
 \maketitle
@@ -89,7 +89,6 @@
 \item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
 \item Voorlopig alleen in het Nederlands
 \item De titelpagina is niet conform de regels, maar komt in de buurt
-\item De navigatie-buttons werken nu nog niet
 \end{itemize}
 \end{frame}
 
@@ -172,10 +171,14 @@ pdf\LaTeX{}:
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
+\item Navigatie-buttons komen rechts boven
+\begin{itemize}
+\item Gebruik \lstinline|\usetheme[nav]{thuas}|
+\end{itemize}
 \item Als je handouts wilt maken, gebruik dan de \lstinline|handout| optie
 \begin{itemize}
 \item Gebruik\lstinline|\documentclass[handout]{beamer}|
-\item Dit wordt door \lstinline|beamer| ondersteund
+\item Dit is een optie voor \lstinline|beamer|
 \end{itemize}
 \item Als je het totaal aantal slides naast het slidenummer wil gebruiken
 \begin{itemize}
@@ -185,8 +188,7 @@ pdf\LaTeX{}:
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Formules kunnen ook}
+\begin{frame}{Formules kunnen ook}
 \begin{itemize}
 \item De formules zijn:
 \begin{align*}
