@@ -50,7 +50,7 @@
 \beamerthemethuas@numpagesfalse
 
 %% Navigation is default off
-\newcommand{\beamerthemethuasnav}{}
+\newcommand{\beamerthemethuas@nav}{}
 
 %% Options:
 %% c: centered slides
@@ -64,7 +64,7 @@
 \DeclareOption{full}{\beamerthemethuas@fulltrue}
 \DeclareOption{vanilla}{\beamerthemethuas@fullfalse}
 \DeclareOption{numpages}{\beamerthemethuas@numpagestrue}
-\DeclareOption{nav}{\renewcommand{\beamerthemethuasnav}{nav}}
+\DeclareOption{nav}{\renewcommand{\beamerthemethuas@nav}{nav}}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
@@ -81,7 +81,7 @@
 
 %% Load settings
 \useinnertheme{thuas}
-\useoutertheme[\beamerthemethuasnav]{thuas}
+\useoutertheme[\beamerthemethuas@nav]{thuas}
 \usecolortheme{thuas}
 
 %% THIS MUST BE IN A SEPARATE FONT FILE
@@ -109,11 +109,8 @@
 %% T1 encoding
 \usepackage[T1]{fontenc}
 % Math package from Libertinus Math
-\usepackage[scaled=1.2]{libertinust1math}
-% Math package from mathpazo
-%\let\temp\rmdefault
-%\usepackage{mathpazo}
-%\let\rmdefault\temp
+\usepackage[scaled=1.1]{libertinust1math}
+%% Make sure that only math is serif
 \usefonttheme[onlymath]{serif}
 %%% Default to helvet
 \usepackage{helvet}
@@ -154,5 +151,6 @@
 
 %% Just a nice touch...
 \hypersetup{pdfcreator={LaTeX with THUAS Beamer theme}}
+
 
 \mode<all>
