@@ -188,6 +188,21 @@ pdf\LaTeX{}:
 \end{itemize}
 \end{frame}
 
+\beamerthemethuaslogofalse
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item Standaard wordt het logo recht onder weergegeven, behalve bij de titelpagina
+\item Het logo kan je uitzetten met \lstinline|\beamerthemethuaslogofalse|
+\item Het logo blijft dan uit
+\item Het logo kan je aanzetten met \lstinline|\beamerthemethuaslogotrue|
+\item Het logo blijft dan aan
+\item Op deze slide is het logo uit
+\end{itemize}
+\end{frame}
+
+\beamerthemethuaslogotrue
+
 \begin{frame}{Formules kunnen ook}
 \begin{itemize}
 \item De formules zijn:
@@ -281,9 +296,9 @@ Niet getest met \lstinline|minted|
 \end{frame}
 
 \begin{frame}[fragile]{Plaatje en voetnoot}
-Een voetnoot\footnote{Dit is een voetnoot}
+Een voetnoot\footnote{Dit is een voetnoot}. Gebruik liever geen voetnoot.
 
-Een voetnoot\footnote{Dit is een voetnoot}
+Een voetnoot\footnote{Dit is een voetnoot}. Gebruik liever geen voetnoot.
 
 Een plaatje (met een \lstinline|\fbox| en \lstinline|\fboxsep=0pt|)
 
@@ -377,6 +392,7 @@ The theme package bestaat uit
 \end{itemize}
 \end{itemize}
 \end{frame}
+
 
 \begin{frame} 
 \frametitle{There Is No Largest Prime Number} 
