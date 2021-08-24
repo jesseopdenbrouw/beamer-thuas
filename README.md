@@ -7,4 +7,4 @@ Beamer style
 The current style
 
 ## thuasold
-The previous style
+The previous style -- will not be updated
