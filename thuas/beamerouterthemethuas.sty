@@ -35,11 +35,22 @@
 
 \mode<presentation>
 
-%% No navigation, TODO
+%% Default is no navigation
 \setbeamertemplate{navigation symbols}{}
 
+%% Navigation is default off
+\newif\ifbeamerthemethuas@boolnav
+
+%% Set navigation
 \DeclareOption{nav}{%
   %% The header, navigation or not
+  \beamerthemethuas@boolnavtrue
+}
+
+\ProcessOptions\relax
+
+%% Check if we have navigation or not
+\ifbeamerthemethuas@boolnav
   \defbeamertemplate*{headline}{thuas}{%
     \hfill\usebeamercolor[fg]{navigation symbols dimmed}%
     \insertslidenavigationsymbol%
@@ -50,9 +61,12 @@
     \insertbackfindforwardnavigationsymbol%
     \hspace*{2ex}%
   }
-}
-
-\ProcessOptions\relax
+\else
+%% Compensate
+  \defbeamertemplate*{headline}{thuas}{%
+    \vspace*{2.5ex}%
+  }
+\fi
 
 %% The footer of the slide
 \defbeamertemplate*{footline}{thuas}
@@ -76,13 +90,14 @@
 }
 
 % Frame title
-\defbeamertemplate*{frametitle}{thuas}[1][]
+\defbeamertemplate*{frametitle}{thuas}
 {
 \vskip1cm%
   \begin{beamercolorbox}[wd=\paperwidth,ht=0cm]{frametitle} 
   \begin{tikzpicture}
   \useasboundingbox[] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 %  \ifx\insertframesubtitle\@empty%
+%      {\node[anchor=west] at (1.75cm,.61){$\strut$\insertframetitle};}
       {\node[anchor=west] at (.75,.61){$\strut$\insertframetitle};}
 %      \else%
 %      {\node[anchor= west] at (1,0.81){\insertframetitle};%
@@ -91,5 +106,7 @@
   \end{tikzpicture}
   \end{beamercolorbox}
 }
+
+%\setbeamersize{text margin left=2cm} 
 
 \mode<all>
