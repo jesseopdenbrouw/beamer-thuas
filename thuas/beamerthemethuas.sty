@@ -121,6 +121,7 @@
 
 %% Simple last slide of the presentation
 \newcommand{\beamerthemethuasbackframe}{%
+  \beamerthemethuaslogofalse
   \setbeamercolor{background canvas}{bg=thuasgreen}
   \setbeamertemplate{footline}{}
   %\setbeamercolor{normal text}{fg=white} % does not work?
@@ -151,6 +152,19 @@
 
 %% Just a nice touch...
 \hypersetup{pdfcreator={LaTeX with THUAS Beamer theme}}
+
+%% Display logo or not
+\newif\ifbeamerthemethuaslogo
+\beamerthemethuaslogotrue
+
+%% Sets the logo in the right lower corner
+\logo{%
+  \ifbeamerthemethuaslogo
+    \ifnum\theframenumber>1\relax
+      \includegraphics[scale=0.39]{beamerthemethuaslogo}\hspace*{3ex}
+    \fi
+  \fi
+}
 
 
 \mode<all>
