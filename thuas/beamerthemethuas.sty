@@ -1,6 +1,6 @@
 %%
 %%
-%% beamerthemethuas.sty
+%% beamerthemethuas-doc.tex
 %%
 %% Definitions for the beamer layout for
 %%
@@ -27,6 +27,10 @@
 %%   beamerouterthemethuas.sty
 %%   beamercolorthemethuas.sty
 %%   beamerthemethuas-doc.tex
+%%   beamerthemethuasfront.pdf
+%%   beamerthemethuaslogo.pdf
+%%   beamerthemethuaslogo-en.pdf
+%%
 %% and the derived file beamerthemethuas-doc.pdf
 %%
 
@@ -50,7 +54,12 @@
 \beamerthemethuas@numpagesfalse
 
 %% Navigation is default off
-\newcommand{\beamerthemethuas@nav}{}
+%\newcommand{\beamerthemethuas@nav}{}
+\newif\ifbeamerthemethuas@boolnav
+\beamerthemethuas@boolnavfalse
+
+%% Dutch or English
+\newcommand{\beamerthemethuaslogo}{beamerthemethuaslogo.pdf}
 
 %% Options:
 %% c: centered slides
@@ -64,7 +73,9 @@
 \DeclareOption{full}{\beamerthemethuas@fulltrue}
 \DeclareOption{vanilla}{\beamerthemethuas@fullfalse}
 \DeclareOption{numpages}{\beamerthemethuas@numpagestrue}
-\DeclareOption{nav}{\renewcommand{\beamerthemethuas@nav}{nav}}
+\DeclareOption{nav}{\beamerthemethuas@boolnavtrue}
+\DeclareOption{dutch}{\renewcommand{\beamerthemethuaslogo}{beamerthemethuaslogo.pdf}}
+\DeclareOption{english}{\renewcommand{\beamerthemethuaslogo}{beamerthemethuaslogo-en.pdf}}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
@@ -81,7 +92,7 @@
 
 %% Load settings
 \useinnertheme{thuas}
-\useoutertheme[\beamerthemethuas@nav]{thuas}
+\useoutertheme{thuas}
 \usecolortheme{thuas}
 
 %% THIS MUST BE IN A SEPARATE FONT FILE
@@ -162,7 +173,7 @@
 \logo{%
   \ifbeamerthemethuaslogo
     \ifnum\theframenumber>1\relax
-      \includegraphics[scale=0.39]{beamerthemethuaslogo}\hspace*{3ex}
+      \includegraphics[scale=0.39]{\beamerthemethuaslogo}\hspace*{3ex}
     \fi
   \fi
 }
