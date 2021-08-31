@@ -27,6 +27,10 @@
 %%   beamerouterthemethuas.sty
 %%   beamercolorthemethuas.sty
 %%   beamerthemethuas-doc.tex
+%%   beamerthemethuasfront.pdf
+%%   beamerthemethuaslogo.pdf
+%%   beamerthemethuaslogo-en.pdf
+%%
 %% and the derived file beamerthemethuas-doc.pdf
 %%
 
@@ -87,7 +91,7 @@
 \item Eerst gebruik je de beamer-class: \lstinline|\documentclass{beamer}|
 \item Daarna laadt je de theme met: \lstinline|\usetheme[|\emph{\small opties}\lstinline|]{thuas}|
 \item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
-\item Voorlopig alleen in het Nederlands
+\item Werkt met Nederlands en Engels
 \item De titelpagina is niet conform de regels, maar komt in de buurt
 \end{itemize}
 \end{frame}
@@ -98,7 +102,7 @@
 \begin{itemize}
 \item Gebruik \lstinline|\documentclass[aspectratio=169]{beamer}|
 \end{itemize}
-\item Maar veel beamers werken nog met 4:3, dus:
+\item Maar sommige beamers werken nog met 4:3, dus:
 \begin{itemize}
 \item Gebruik \lstinline|\documentclass[aspectratio=43]{beamer}|
 \end{itemize}
@@ -112,6 +116,16 @@
 \item Dat komt o.a.\@ door de vorm en de grootte van de gebruikte fonts
 \end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{THUAS Beamer Slides}
+Nederlands en Engels worden ondersteund.
+
+Nederlands is de standaard taal.
+
+Gebruik \lstinline|\usetheme[english]{thuas}| voor Engels.
+
+Op de titelpagina en in de slides wordt dan het Engelse logo gebruikt.
 \end{frame}
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
@@ -177,7 +191,7 @@ pdf\LaTeX{}:
 \end{itemize}
 \item Als je handouts wilt maken, gebruik dan de \lstinline|handout| optie
 \begin{itemize}
-\item Gebruik\lstinline|\documentclass[handout]{beamer}|
+\item Gebruik \lstinline|\documentclass[handout]{beamer}|
 \item Dit is een optie voor \lstinline|beamer|
 \end{itemize}
 \item Als je het totaal aantal slides naast het slidenummer wil gebruiken
