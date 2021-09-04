@@ -47,9 +47,6 @@
 %% The THUAS beamer style, loads the correct fonts
 \usetheme[nav]{thuas}
 
-%% Use microtype
-%\usepackage[stretch=10]{microtype}
-
 %% PGFplots
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
@@ -85,6 +82,7 @@
 %% Title page
 \maketitle
 
+
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
 \item Dit is de onofficiële realisatie van slides met het THUAS-thema
@@ -95,6 +93,7 @@
 \item De titelpagina is niet conform de regels, maar komt in de buurt
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
@@ -118,15 +117,22 @@
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}[fragile]{THUAS Beamer Slides}
-Nederlands en Engels worden ondersteund.
-
-Nederlands is de standaard taal.
-
-Gebruik \lstinline|\usetheme[english]{thuas}| voor Engels.
-
-Op de titelpagina en in de slides wordt dan het Engelse logo gebruikt.
+\begin{itemize}
+\item Nederlands en Engels worden ondersteund.
+\item Nederlands is de standaard taal.
+\begin{itemize}
+\item Gebruik \lstinline|\usetheme[english]{thuas}| voor Engels.
+\end{itemize}
+\item Op de titelpagina en in de slides wordt dan het Engelse logo gebruikt.
+\item Standaard wordt 11pt fontgrootte gebruikt.
+\begin{itemize}
+\item Dit kan je met een class optie aanpassen, bijvoorbeeld \lstinline|\documentclass[10pt]{beamer}|
+\end{itemize}
+\end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 Om correct gebruik te maken van het Nederlands, gebruik
@@ -138,9 +144,9 @@ en
 \usepackage[dutch]{babel}
 \end{lstlisting}
 Dan worden environments als \lstinline|theorem| en \lstinline|proof| van de correcte namen voorzien
-
 \alert{TODO}: automatisch laden van \lstinline|babel| met \lstinline|dutch| of \lstinline|english|
 \end{frame}
+
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 Xe\LaTeX{} en Lua\LaTeX:
@@ -153,16 +159,18 @@ Xe\LaTeX{} en Lua\LaTeX:
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}[fragile]{THUAS Beamer Slides}
 pdf\LaTeX{}:
 \begin{itemize}
 \item Het standaard font is Helvet voor lopende tekst en Helvet/bold voor titels
-\item Het standaard font voor formules is Libertinus Math (\alert{kan nog veranderen})
+\item Het standaard font voor formules is Libertinus Math
 \item Het standaard font voor programmacode is Nimbus Mono
 \item Deze fonts worden automatisch geladen
 \item Wil je andere fonts gebruiken, gebruik dan \lstinline|\usetheme[vanilla]{thuas}|
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
@@ -183,6 +191,7 @@ pdf\LaTeX{}:
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
 \item Navigatie-buttons komen rechts boven
@@ -202,6 +211,7 @@ pdf\LaTeX{}:
 \end{itemize}
 \end{frame}
 
+
 \beamerthemethuaslogofalse
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
@@ -217,9 +227,10 @@ pdf\LaTeX{}:
 
 \beamerthemethuaslogotrue
 
+
 \begin{frame}{Formules kunnen ook}
 \begin{itemize}
-\item De formules zijn:
+\item De formules zijn (met behulp van een \lstinline|align*| environment):
 \begin{align*}
 \left|F(x)\right|^b_a &= \int_a^b x^2 + 2x + 1 \, \mathrm{d} x \\
 \zeta (s) &= \sum_{n=1}^\infty \dfrac{1}{n^{\;\!s}} \\
@@ -228,8 +239,9 @@ M&\approx\frac{\pi}{4}\left(\frac{2d}{\lambda_o}\right)^2\left(\mathrm{NA}\right
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Formules kunnen ook}
-Nu zonder itemize
+Nu zonder itemize (met behulp van \lstinline|equation*| en \lstinline|multiline*|)
 \begin{equation*}
 \tan \alpha = \dfrac{\sin \alpha}{\cos \alpha} \qquad \tan x = \sin x \, / \cos x
 \end{equation*}
@@ -241,6 +253,7 @@ K=\displaystyle{\frac{1}{2}m_1 L_1^2 \dot{\theta_1}^2+\frac{1}{2} m_2[L_1^2 \dot
 \mathrm{e}^{\, \mathrm{j}\alpha} = \cos \alpha + \mathrm{j} \sin \alpha
 \end{equation*}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Voorbeeld met een itemize}
@@ -255,8 +268,9 @@ Voorbeeld met een \texttt{itemize} en gaat tot drie niveaus diep.
 \end{itemize}
 \item item
 \end{itemize}
-En weer wat tekst
+Meer niveaus zijn in \lstinline|beamer| niet mogelijk.
 \end{frame}
+
 
 \begin{frame}{Voorbeeld met een enumerate}
 Voorbeeld met een \texttt{enumerate} en gaat tot drie niveaus diep.
@@ -273,20 +287,23 @@ Voorbeeld met een \texttt{enumerate} en gaat tot drie niveaus diep.
 \end{enumerate}
 \item drie
 \end{enumerate}
+Meer niveaus zijn in \lstinline|beamer| niet mogelijk.
 \end{frame}
 
 
 \begin{frame}{Voorbeeld van een description}
 De label wordt vet en rechts uitgelijnd afgedrukt
 
-De label kan ongeveer 8 karakters bevatten
+De label kan ongeveer 9 karakters bevatten
 
 Daarna wordt er ingesprongen
 \begin{description}
-\item[12345678] Dit is een hele lange tekst en ik denk dat deze zin over twee regels verspreid zal zijn
+\item[123456789] Dit is een hele lange tekst en ik denk dat deze zin over twee regels verspreid zal zijn
 \item[label] description
+\item[deze label is te groot] description
 \end{description}
 \end{frame}
+
 
 %% A frame with a listing NEEDS fragile
 \begin{frame}[fragile]{Een frame met code}
@@ -302,16 +319,15 @@ De frame wordt in een bestand \lstinline|\jobname.vrb| geplaatst en daarna ingel
 #include <stdio.h>
 
 int main(void) {
-    printf("Thuas Beamer Slides!\n");
+    printf("THUAS Beamer Slides!\n");
 }
 \end{lstlisting}
 
 Niet getest met \lstinline|minted|
 \end{frame}
 
-\begin{frame}[fragile]{Plaatje en voetnoot}
-Een voetnoot\footnote{Dit is een voetnoot}. Gebruik liever geen voetnoot.
 
+\begin{frame}[fragile]{Voetnoot en plaatje}
 Een voetnoot\footnote{Dit is een voetnoot}. Gebruik liever geen voetnoot.
 
 Een plaatje (met een \lstinline|\fbox| en \lstinline|\fboxsep=0pt|)
@@ -322,7 +338,10 @@ Een plaatje (met een \lstinline|\fbox| en \lstinline|\fboxsep=0pt|)
 \caption{Dit is een plaatje}
 \end{figure}
 
+De fontgrootte van de caption is \lstinline|\footnotesize|.
+
 \end{frame}
+
 
 \begin{frame}{Tabellen}
 Een tabel kan ook (deze is met \texttt{booktabs})
@@ -343,18 +362,22 @@ Aaa & Bbb & 1.24 & 2.54 \\
 Let op: \texttt{siunitx} typesets in math-mode!
 \end{frame}
 
-\begin{frame}{De normaalverdeling met \texttt{pgfplots} (voor Kees)}
+
+\begin{frame}{De normaalverdeling met \texttt{pgfplots} (Kees!)}
 \begin{figure}
-\begin{tikzpicture}
+\begin{tikzpicture}[
+  declare function = { bell(\x) = exp(-\x^2); }
+  ]
 \begin{axis}[
     width=0.7\paperwidth,
     height=0.65\paperheight,
     xtick={-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0}, 
-    xticklabels={$-4\sigma$, $-3\sigma$, $-2\sigma$, $-1\sigma$, $0$, $1\sigma$, $2\sigma$, $3\sigma$, $4\sigma$}
-]
+    xticklabels={$-4\sigma$, $-3\sigma$, $-2\sigma$, $-1\sigma$, $0$, $1\sigma$, $2\sigma$, $3\sigma$, $4\sigma$},
+    font=\footnotesize
+  ]
 
 %% Plot bell curve
-\addplot [thuasgreen!50!black, mark=none, samples=301, name path=f,domain=-4:4] { exp(-x^2) };
+\addplot [thuasgreen!50!black, mark=none, samples=301, name path=f,domain=-4:4] { bell(\x) };
 
 %% Just a path over the x axis
 \path[name path=xaxis] (axis cs:-4,0) -- (axis cs:4,0);
@@ -364,29 +387,35 @@ Let op: \texttt{siunitx} typesets in math-mode!
               fill between[of=f and xaxis, soft clip={domain=-1:1}];
         
 %% Draw the 1 sigma from-to line, set text in math mode
-\draw[thuasgreen!50!black,latex-latex] (axis cs:-1,0.1) -- (axis cs:1,0.1) node[midway, above] {$68.26\,\%$};
+\draw[latex-] (axis cs:0.0,0.4) -- (axis cs:1.1,0.75) node[right] {Area is 68.26\,\% of total};
 
+\draw[latex-] (axis cs:-0.7,{bell(-0.7)}) -- (axis cs:-2,0.8) node[left] {e$^{-x^2}$};
 \end{axis}
 \end{tikzpicture}
 \end{figure}
 \end{frame}
+
 
 \begin{frame}{Een 3D-plaatje met \texttt{pgfplots}}
 \begin{figure}
 \begin{tikzpicture} 
 \begin{axis}[
    colorbar,
-%   title={$\exp(-x^2-y^2)$},
+   colorbar style={
+     font=\footnotesize
+   },
    width=0.45\paperwidth,
+   font=\footnotesize,
 ]
-  \addplot3[surf,shader=faceted interp,samples=31,domain=-2:2] {exp(-x^2-y^2)};
+  \addplot3[surf,samples=41,domain=-2:2] {exp(-x^2-y^2)};
 \end{axis}
 \end{tikzpicture}
 \end{figure}
 \end{frame}
 
+
 \begin{frame}[fragile]{Gory details...}
-The theme package bestaat uit
+De theme package bestaat uit
 \begin{itemize}
 \item \texttt{beamerthemethuas.sty}
 \begin{itemize}
@@ -398,12 +427,23 @@ The theme package bestaat uit
 \end{itemize}
 \item \texttt{beamerinnerthemethuas.sty}
 \begin{itemize}
-\item Hierin is de opmaak van de inhoud gedefinieerd (ook de titelpagina)
+\item Hierin is de opmaak \emph{van} de inhoud gedefinieerd (ook de titelpagina)
 \end{itemize}
 \item \texttt{beamerouterthemethuas.sty}
 \begin{itemize}
 \item Hierin is de opmaak \emph{rond} de inhoud gedefinieerd (header, footer)
 \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Gory details...}
+Er worden drie plaatjes gebruikt
+\begin{itemize}
+\item Plaatje op titelpagina: \lstinline|beamerthemethuasfront.pdf|
+\item Logo Nederlands: \lstinline|beamerthemethuaslogo.pdf|
+\item Logo Engels: \lstinline|beamerthemethuaslogo-en.pdf|
+\item \alert{TODO} Plaatjes in PGF.
 \end{itemize}
 \end{frame}
 
@@ -423,6 +463,8 @@ number not in the first $p$ numbers.
 \end{enumerate}
 \end{proof}
 \end{frame}
+
+\beamerthemethuasbackframe
 
 %%% Test slide van Jesse
 %\newdimen\efkes\efkes=12.80cm
@@ -444,7 +486,5 @@ number not in the first $p$ numbers.
 %
 %\end{frame}
 %\makeatother
-
-\beamerthemethuasbackframe
 
 \end{document}
