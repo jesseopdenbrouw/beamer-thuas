@@ -38,7 +38,7 @@
 \newcommand{\beamerthemethuasversion}{v1.0}
 \newcommand{\beamerthemethuasdate}{2021/08/21}
 
-%\NeedsTeXFormat{LaTeX2e}[2021-06-01]
+%\NeedsTeXFormat{LaTeX2e}[1995-01-01]
 \ProvidesPackage{beamerthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences theme]
 \typeout{The Hague University of Applied Sciences theme \beamerthemethuasversion\space (JodB, 2021)}
 
@@ -54,12 +54,15 @@
 \beamerthemethuas@numpagesfalse
 
 %% Navigation is default off
-%\newcommand{\beamerthemethuas@nav}{}
 \newif\ifbeamerthemethuas@boolnav
 \beamerthemethuas@boolnavfalse
 
 %% Dutch or English
 \newcommand{\beamerthemethuaslogo}{beamerthemethuaslogo.pdf}
+
+%% Display logo or not
+\newif\ifbeamerthemethuaslogo
+\beamerthemethuaslogotrue
 
 %% Options:
 %% c: centered slides
@@ -76,6 +79,7 @@
 \DeclareOption{nav}{\beamerthemethuas@boolnavtrue}
 \DeclareOption{dutch}{\renewcommand{\beamerthemethuaslogo}{beamerthemethuaslogo.pdf}}
 \DeclareOption{english}{\renewcommand{\beamerthemethuaslogo}{beamerthemethuaslogo-en.pdf}}
+%\DeclareOption{nologo}{\beamerthemethuaslogofalse}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
@@ -132,51 +136,46 @@
 
 %% Simple last slide of the presentation
 \newcommand{\beamerthemethuasbackframe}{%
-  \beamerthemethuaslogofalse
+  %% Set frame background color to THUAS green
   \setbeamercolor{background canvas}{bg=thuasgreen}
-  \setbeamertemplate{footline}{}
-  %\setbeamercolor{normal text}{fg=white} % does not work?
-  \begin{frame}
-    \transduration{2}
-    \begin{tikzpicture}
-      \useasboundingbox (-.2\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-      \node[right] at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
-    \end{tikzpicture}
+  %% Begin frame, only <4> when handout
+  %% [plain] removes header and footer
+  \begin{frame}<handout:4>[plain]
+    \transduration<1>{1}
+    \transduration<2>{1}
+    \transduration<3>{1}
+    \vspace*{0.25\paperheight}
+    \setbeamersize{description width=0.1\paperwidth}
+    \begin{description}
+      \item<1-> \color{white}\bfseries\fontsize{35}{35}\selectfont let's change
+      \item<2-> \color{white}\bfseries\Large\selectfont YOU. US. THE WORLD.
+      \item<3->
+      \item<4-> \color{white}\bfseries\Large\selectfont \ifxetex Xe\else\ifluatex Lua\fi\fi \LaTeX{} with Beamer Class.
+    \end{description}
   \end{frame}
-  \begin{frame}
-    \transduration{2}
-    \begin{tikzpicture}
-      \useasboundingbox (-0.2\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-      \node[right] at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
-      \node[right] at (0,-1) {\color{white}\bfseries\Large\selectfont YOU. US. THE WORLD.};
-    \end{tikzpicture}
-  \end{frame}
-  \begin{frame}
-    \begin{tikzpicture}
-      \useasboundingbox (-0.2\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-      \node[right] at (0,0) {\color{white}\bfseries\fontsize{35}{35}\selectfont let's change};
-      \node[right] at (0,-1) {\color{white}\bfseries\Large\selectfont YOU. US. THE WORLD.};
-      \node[right] at (0,-2) {\color{white}\bfseries\normalsize\selectfont \LaTeX{} with Beamer class.};
-    \end{tikzpicture}
-  \end{frame}
-  \beamerthemethuaslogofalse
+  \setbeamersize{description width of=123456789}
+  \setbeamercolor{background canvas}{bg=white}
 }
 
 %% Just a nice touch...
 \hypersetup{pdfcreator={LaTeX with THUAS Beamer theme}}
 
-%% Display logo or not
-\newif\ifbeamerthemethuaslogo
-\beamerthemethuaslogotrue
-
 %% Sets the logo in the right lower corner
 \logo{%
   \ifbeamerthemethuaslogo
     \ifnum\theframenumber>1\relax
-      \includegraphics[scale=0.39]{\beamerthemethuaslogo}\hspace*{3ex}
+      \includegraphics[scale=0.39]{\beamerthemethuaslogo}\hspace*{3ex}%
     \fi
   \fi
 }
 
+%% Only for 16:9
+\ifdim\beamer@paperwidth<12.81cm
+\else
+  \setbeamersize{text margin left=2cm, text margin right=2cm} 
+\fi
+
+%% Set the desciption size based on the digits 1 to 9
+\setbeamersize{description width of=123456789}
 
 \mode<all>
