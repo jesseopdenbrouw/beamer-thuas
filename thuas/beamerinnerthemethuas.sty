@@ -34,8 +34,8 @@
 %% and the derived file beamerthemethuas-doc.pdf
 %%
 
-\ProvidesPackage{beamerinnerthemethuas}[2021/08/20 V1.0 The Hague University of Applied Sciences inner theme]
-\typeout{The Hague University of Applied Sciences inner theme V1.0 (JodB, 2021)}
+\ProvidesPackage{beamerinnerthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences inner theme]
+\typeout{The Hague University of Applied Sciences inner theme \beamerthemethuasversion\space (JodB, 2021)}
 
 %% Xe(La)TeX does some strange  things, so we need to
 %% check for it
@@ -67,6 +67,9 @@
 \setbeamerfont*{caption}{size=\footnotesize}
 
 \setbeamerfont*{description item}{series=\bfseries,size=\normalsize}
+
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
 
 % More room between sole lines and list env.
 %https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
@@ -122,9 +125,9 @@
       \ifdim\beamer@paperwidth<12.81cm\relax
       %% 4:3
         \begin{tikzpicture}
-          \useasboundingbox (-0.435\paperwidth,0.5) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+          \useasboundingbox (-0.43\paperwidth,0.5) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
           \node at (0,2.0) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-          \node at (3.7,-2.0) {\includegraphics[scale=0.325]{\beamerthemethuaslogo}};
+          \node at (3.7,-2.0) {\includegraphics[scale=0.30]{\beamerthemethuaslogo}};
          \end{tikzpicture}
       %% 16:9
       \else
