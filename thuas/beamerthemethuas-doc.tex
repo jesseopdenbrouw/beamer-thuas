@@ -59,7 +59,6 @@
     language=C,
     basicstyle=\ttfamily\small,
     xleftmargin=1em,
-%    escapeinside={(*}{*)}
 }
 
 %% Nice tables, no vertical bars!
@@ -70,7 +69,7 @@
 
 %% Set up credentials
 \title{THUAS Beamer Slides}
-\subtitle{Subtitel wordt niet weergegeven}
+\subtitle{De THUAS layout maar nu met Beamer}
 \author{Jesse op den Brouw}
 \date{\today}
 
@@ -144,6 +143,7 @@ en
 \usepackage[dutch]{babel}
 \end{lstlisting}
 Dan worden environments als \lstinline|theorem| en \lstinline|proof| van de correcte namen voorzien
+
 \alert{TODO}: automatisch laden van \lstinline|babel| met \lstinline|dutch| of \lstinline|english|
 \end{frame}
 
@@ -216,7 +216,7 @@ pdf\LaTeX{}:
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
-\item Standaard wordt het logo recht onder weergegeven, behalve bij de titelpagina
+\item Standaard wordt het logo rechtsonder weergegeven, behalve bij de titelpagina
 \item Het logo kan je uitzetten met \lstinline|\beamerthemethuaslogofalse|
 \item Het logo blijft dan uit
 \item Het logo kan je aanzetten met \lstinline|\beamerthemethuaslogotrue|
@@ -255,8 +255,8 @@ K=\displaystyle{\frac{1}{2}m_1 L_1^2 \dot{\theta_1}^2+\frac{1}{2} m_2[L_1^2 \dot
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Voorbeeld met een itemize}
+\begin{frame}{Voorbeeld met een itemize}
+
 Voorbeeld met een \texttt{itemize} en gaat tot drie niveaus diep.
 \begin{itemize}
 \item item
@@ -389,7 +389,7 @@ Let op: \texttt{siunitx} typesets in math-mode!
 %% Draw the 1 sigma from-to line, set text in math mode
 \draw[latex-] (axis cs:0.0,0.4) -- (axis cs:1.1,0.75) node[right] {Area is 68.26\,\% of total};
 
-\draw[latex-] (axis cs:-0.7,{bell(-0.7)}) -- (axis cs:-2,0.8) node[left] {e$^{-x^2}$};
+\draw[latex-] (axis cs:-0.7,{bell(-0.7)}) -- (axis cs:-2,0.8) node[left] {$\mathrm{e}^{-x^2}$};
 \end{axis}
 \end{tikzpicture}
 \end{figure}
@@ -448,8 +448,7 @@ Er worden drie plaatjes gebruikt
 \end{frame}
 
 
-\begin{frame} 
-\frametitle{There Is No Largest Prime Number} 
+\begin{frame}{There Is No Largest Prime Number} 
 \begin{theorem}
 There is no largest prime number.
 \end{theorem} 
