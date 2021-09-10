@@ -50,6 +50,7 @@
 
 \ProcessOptions\relax
 
+
 %% Check if we have navigation or not
 \ifbeamerthemethuas@boolnav
   \defbeamertemplate*{headline}{thuas}{%
@@ -63,9 +64,12 @@
     \hspace*{2ex}%
   }
 \else
-%% Compensate
+%% Compensate when not using navigation symbols
   \defbeamertemplate*{headline}{thuas}{%
-    \vspace*{2.5ex}%
+    %% Create a hbox with all navigation symbols
+    \setbox0=\hbox{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsectionnavigationsymbol\insertsubsectionnavigationsymbol\insertdocnavigationsymbol\insertbackfindforwardnavigationsymbol}%
+    %% Make a vertical space of the height of the (not shown) navigation symbols
+    \vspace*{\ht0}%
   }
 \fi
 
@@ -83,7 +87,7 @@
          \else
             \makebox[2em][r]{\raisebox{3ex}{\insertframenumber}}%
          \fi
-        \hfill
+%        \hfill
       \end{beamercolorbox}%
     }%
     \vskip0pt%
