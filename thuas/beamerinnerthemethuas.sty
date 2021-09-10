@@ -84,15 +84,15 @@
 
 \def\@listi{\leftmargin\leftmargini
             \topsep 0\p@ \@plus2\p@ \@minus2.5\p@
-            \parsep 5\p@
+            \parsep 3\p@
             \itemsep3\p@ \@plus2\p@ \@minus3\p@}
 \let\@listI\@listi
 \def\@listii{\leftmargin\leftmarginii
               \topsep    0\p@ \@plus1\p@ \@minus2\p@
-              \parsep    1\p@   \@plus\p@
+              \parsep    0\p@   \@plus\p@
               \itemsep   \parsep}
 \def\@listiii{\leftmargin\leftmarginiii
-              \topsep    2\p@ \@plus1\p@ \@minus2\p@
+              \topsep    0\p@ \@plus1\p@ \@minus2\p@
               \parsep    0\p@   \@plus\p@
               \itemsep   \parsep}
 
@@ -173,14 +173,14 @@
       \ifdim\beamer@paperwidth<12.81cm
       %% 4:3
         \vskip-1.0cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.99cm,sep=1pt,#1]{title page header}%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{title page header}%
           \usebeamerfont{title}\inserttitle%
         \end{beamercolorbox}%
         \vskip0.25cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.99cm,sep=1pt,#1]{author}%
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{author}%
           \usebeamerfont{author}\insertauthor%
         \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.99cm,sep=1pt,#1]{date}
+        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{date}
           \usebeamerfont{author}\insertdate%
         \end{beamercolorbox}%
       \else
