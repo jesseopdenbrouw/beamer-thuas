@@ -100,105 +100,54 @@
 %% For bounding box of image
 \newdimen\tph\tph=0.7\paperheight
 % Title page
-\defbeamertemplate*{title page}{thuas}[1][]
-{
-    %% XeTeX is doing it's own thing...
-    \ifxetex
-      %% Very dirty hack to test if we use 16:9 or 4:3
-      \ifdim\beamer@paperwidth<12.81cm\relax
-      %% 4:3
-        \begin{tikzpicture}
-          \useasboundingbox (0\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-          \node at (5.5,2.0) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-          \node at (9.5,-2.0) {\includegraphics[scale=0.30]{\beamerthemethuaslogo}};
-        \end{tikzpicture}
-      % 16:9
-      \else
-        \begin{tikzpicture}
-          \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-          \node at (0.1,1.1) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-          \node at (4.60,-2.5) {\includegraphics[scale=0.39]{\beamerthemethuaslogo}};
-        \end{tikzpicture}
-      \fi
-    %% pdflatex or lualatex
-    \else
-      \ifdim\beamer@paperwidth<12.81cm\relax
-      %% 4:3
-        \begin{tikzpicture}
-          \useasboundingbox (-0.43\paperwidth,0.5) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-          \node at (0,2.0) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-          \node at (3.7,-2.0) {\includegraphics[scale=0.30]{\beamerthemethuaslogo}};
-         \end{tikzpicture}
-      %% 16:9
-      \else
-        \begin{tikzpicture}
-          \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-          \node at (0.1,1.1) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-          \node at (4.60,-2.5) {\includegraphics[scale=0.39]{\beamerthemethuaslogo}};
-         \end{tikzpicture}
-      \fi
-    \fi
+\defbeamertemplate*{title page}{thuas}
+{%
+  %% Very dirty hack to test if we use 16:9 or 4:3
+  \ifdim\beamer@paperwidth<12.81cm\relax
+  %% 4:3
+    \begin{tikzpicture}
+      \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+      \node at (0.5,1.5) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
+      \node at (4.60,-2.5) {\includegraphics[scale=0.39]{\beamerthemethuaslogo}};
+    \end{tikzpicture}
+  % 16:9
+  \else
+    \begin{tikzpicture}
+      \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+      \node at (0.1,1.1) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
+      \node at (4.60,-2.5) {\includegraphics[scale=0.39]{\beamerthemethuaslogo}};
+    \end{tikzpicture}
+  \fi
 
-    %% XeTeX is doing it's own thing...
-    \ifxetex
-      %% Very dirty hack to test if we use 16:9 or 4:3
-      \ifdim\beamer@paperwidth<12.81cm
-      %% 4:3
-        \vskip-2.5cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{title page header}%
-          \usebeamerfont{title}\inserttitle%
-        \end{beamercolorbox}%
-        \vskip0.25cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{author}%
-          \usebeamerfont{author}\insertauthor%
-        \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{date}
-          \usebeamerfont{author}\insertdate%
-        \end{beamercolorbox}%
-      \else
-      %% 16:9
-        \vskip-1.5cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt,#1]{title page header}%
-          \usebeamerfont{title}\inserttitle%
-        \end{beamercolorbox}%
-        \vskip0.25cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt,#1]{author}%
-          \usebeamerfont{author}\insertauthor%
-        \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt,#1]{date}
-          \usebeamerfont{author}\insertdate%
-        \end{beamercolorbox}%
-      \fi
-    \else
-      \ifdim\beamer@paperwidth<12.81cm
-      %% 4:3
-        \vskip-1.0cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{title page header}%
-          \usebeamerfont{title}\inserttitle%
-        \end{beamercolorbox}%
-        \vskip0.25cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{author}%
-          \usebeamerfont{author}\insertauthor%
-        \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt,#1]{date}
-          \usebeamerfont{author}\insertdate%
-        \end{beamercolorbox}%
-      \else
-      %% 16:9
-        \vskip-1.5cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt,#1]{title page header}%
-          \usebeamerfont{title}\inserttitle%
-        \end{beamercolorbox}%
-        \vskip0.25cm%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt,#1]{author}%
-          \usebeamerfont{author}\insertauthor%
-        \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt,#1]{date}
-          \usebeamerfont{author}\insertdate%
-        \end{beamercolorbox}%
-      \fi
-    \fi
-    \vfill
+  %% Very dirty hack to test if we use 16:9 or 4:3
+  \ifdim\beamer@paperwidth<12.81cm
+  %% 4:3
+    \vskip-2.0cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{title page header}%
+      \usebeamerfont{title}\inserttitle%
+    \end{beamercolorbox}%
+    \vskip0.25cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{author}%
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{date}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}%
+  \else
+  %% 16:9
+    \vskip-1.5cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt]{title page header}%
+      \usebeamerfont{title}\inserttitle%
+    \end{beamercolorbox}%
+    \vskip0.25cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt]{author}%
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt]{date}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}%
+  \fi
+  \vfill
 }
 
 \mode<all>
