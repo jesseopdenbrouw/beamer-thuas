@@ -122,16 +122,28 @@
 \item Nederlands en Engels worden ondersteund.
 \item Nederlands is de standaard taal.
 \begin{itemize}
-\item Gebruik \lstinline|\usetheme[english]{thuas}| voor Engels.
+\item Gebruik \lstinline|\usetheme[dutch]{thuas}|.
+\item Op de titelpagina en in de slides wordt dan het Nederlandse logo gebruikt.
 \end{itemize}
-\item Op de titelpagina en in de slides wordt dan het Engelse logo gebruikt.
-\item Standaard wordt 11pt fontgrootte gebruikt.
+\item Engels kan ook gebruikt worden.
 \begin{itemize}
-\item Dit kan je met een class optie aanpassen, bijvoorbeeld \lstinline|\documentclass[10pt]{beamer}|
+\item Gebruik \lstinline|\usetheme[english]{thuas}|.
+\item Op de titelpagina en in de slides wordt dan het Engelse logo gebruikt.
 \end{itemize}
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item Standaard wordt 11pt fontgrootte gebruikt.
+\item Dit kan je met een class optie aanpassen, bijvoorbeeld \lstinline|\documentclass[10pt]{beamer}|
+\item Er zijn verschillende fontgroottes: 
+\begin{itemize}
+\item 8pt, 9pt, 10pt, 11pt (default), 12pt, 14pt, 17pt en 20pt.
+\item 10pt en 11pt zijn de meest gangbare varianten.
+\end{itemize}
+\end{itemize}
+\end{frame}
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 Om correct gebruik te maken van het Nederlands, gebruik
@@ -463,6 +475,17 @@ number not in the first $p$ numbers.
 \end{proof}
 \end{frame}
 
+\begin{frame}[fragile]{Allerlaaste slide}
+De allerlaatste slide
+\begin{itemize}
+\item Je kan een allerlaatste slide automatisch maken met \lstinline|\beamerthemethuasbackframe|
+\item In de resulterende PDF zie je dan vier verschillende slides.
+\item Bij het \textsl{afspelen} met Acrobat of een \textsl{PDF aware} presenter worden de slides automatisch na elkaar afgespeed met steeds een seconde vertraging
+\end{itemize}
+
+\end{frame}
+
+%% Make last slide
 \beamerthemethuasbackframe
 
 %%% Test slide van Jesse
