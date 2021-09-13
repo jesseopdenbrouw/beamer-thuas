@@ -102,36 +102,36 @@
 %% THIS MUST BE IN A SEPARATE FONT FILE
 %% Check if we must load the fonts
 \ifbeamerthemethuas@full
-%% Find out what engine we're running...
-\usepackage{iftex}
-%% Settings for fonts et al.
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
-\usepackage[math-style=TeX]{unicode-math}
-%\usepackage{unicode-math}
-\usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{Arial}
-\defaultfontfeatures{Scale=MatchUppercase}
-\setsansfont[BoldFont={Arial Black}]{Arial}
-\setmonofont{Consolas}
-%\setmathfont[slash-delimiter=frac]{Cambria Math}
-\setmathfont{Cambria Math}
-%% Needed to get \mathrm{e} typeset correct
-\setmathrm{Cambria Math}
-\setoperatorfont\normalfont % For log, sin, cos, etc.
-\else
-%%% Set input encoding to UTF-8
-\usepackage[utf8]{inputenc}
-%% T1 encoding
-\usepackage[T1]{fontenc}
-% Math package from Libertinus Math
-\usepackage[scaled=1.1]{libertinust1math}
-%% Make sure that only math is serif
-\usefonttheme[onlymath]{serif}
-%%% Default to helvet
-\usepackage{helvet}
-%% Use the Nimbus Mono fonts
-\usepackage{nimbusmono}
-\fi
+  %% Find out what engine we're running...
+  \usepackage{iftex}
+  %% Settings for fonts et al.
+  \ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+    \usepackage[math-style=TeX]{unicode-math}
+    %\usepackage{unicode-math}
+    \usepackage{fontspec}
+    \setmainfont[Ligatures=TeX]{Arial}
+    \defaultfontfeatures{Scale=MatchUppercase}
+    \setsansfont[BoldFont={Arial Black}]{Arial}
+    \setmonofont{Consolas}
+    %\setmathfont[slash-delimiter=frac]{Cambria Math}
+    \setmathfont{Cambria Math}
+    %% Needed to get \mathrm{e} typeset correct
+    \setmathrm{Cambria Math}
+    \setoperatorfont\normalfont % For log, sin, cos, etc.
+  \else
+    %%% Set input encoding to UTF-8
+    \usepackage[utf8]{inputenc}
+    %% T1 encoding
+    \usepackage[T1]{fontenc}
+    %% Math package from Libertinus Math
+    \usepackage[scaled=1.1]{libertinust1math}
+    %% Make sure that only math is serif
+    \usefonttheme[onlymath]{serif}
+    %% Default to helvet
+    \usepackage{helvet}
+    %% Use the Nimbus Mono fonts
+    \usepackage{nimbusmono}
+  \fi
 \fi
 
 %% Simple last slide of the presentation
