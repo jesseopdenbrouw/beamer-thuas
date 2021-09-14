@@ -28,8 +28,6 @@
 %%   beamercolorthemethuas.sty
 %%   beamerthemethuas-doc.tex
 %%   beamerthemethuasfront.pdf
-%%   beamerthemethuaslogo.pdf
-%%   beamerthemethuaslogo-en.pdf
 %%
 %% and the derived file beamerthemethuas-doc.pdf
 %%
@@ -52,6 +50,13 @@
 \usepgfplotslibrary{fillbetween}
 \usepgfplotslibrary{patchplots}
 \pgfplotsset{compat=1.3}
+%% Tikz already loaded by theme
+\usetikzlibrary{spy}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations}
+
+\pgfdeclarelayer{background layer}
+\pgfsetlayers{background layer,main}
 
 %% Nice listings
 \usepackage{listings}
@@ -194,9 +199,9 @@ pdf\LaTeX{}:
 \begin{itemize}
 \item Deze subtitels worden gewoon genegeerd
 \end{itemize}
-\item De inhoud van een slide wordt \emph{niet} gecentreerd
+\item De inhoud van een slide is \emph{top aligned}
 \begin{itemize}
-\item De huisstijl is zo
+\item Dat is conform de huisstijl
 \item Wil je toch gecentreerde slides, gebruik dan \lstinline|\usetheme[c]{thuas}|
 \end{itemize}
 \item Maak een allerlaatste slide met \lstinline|\beamerthemethuasbackframe|
@@ -223,6 +228,19 @@ pdf\LaTeX{}:
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{THUAS Beamer Slides}
+\begin{itemize}
+\item De standaard kleur voor slide titel en logo is groen.
+\item Je kan dit veranderen in THUAS grijs
+\begin{itemize}
+\item Gebruik \lstinline|\usetheme[grey]{thuas}|
+\end{itemize}
+\item Je kan dit veranderen in zwart
+\begin{itemize}
+\item Gebruik \lstinline|\usetheme[black]{thuas}|
+\end{itemize}
+\end{itemize}
+\end{frame}
 
 \beamerthemethuaslogofalse
 
@@ -346,7 +364,7 @@ Een plaatje (met een \lstinline|\fbox| en \lstinline|\fboxsep=0pt|)
 
 \begin{figure}
 \fboxsep=0pt
-\fbox{\includegraphics[scale=0.75]{beamerthemethuaslogo}}
+\fbox{\resizebox{0.30\paperwidth}{!}{\beamerthemethuaslogo}}
 \caption{Dit is een plaatje}
 \end{figure}
 
@@ -426,6 +444,44 @@ Let op: \texttt{siunitx} typesets in math-mode!
 \end{frame}
 
 
+\begin{frame}{Afgeleide met \texttt{spy}, \texttt{decorations} \& \texttt{background}}
+\def\ll{1.0}
+\def\rr{2.0}
+\centering
+\begin{tikzpicture}
+    [line cap=round,line join=round,scale=1,
+     %using the 'spy' to magnify a part of the picture
+     spy using outlines={circle,lens={scale=1.5}, size=4cm, connect spies},
+     %using the decoration 'brace' (=a curly brace as path replacement)
+     decoration={brace,amplitude=2pt},
+	declare function={ f(\x) = (0.3*\x*\x);}]
+	\coordinate (leftc) at (\ll,{f(\ll)});
+	\coordinate (rightc) at (\rr,{f(\rr)});
+	\coordinate (meet) at (\rr,{f(\ll)});
+
+	\draw[domain=0:3,thick] plot (\x,{f(\x)}) node[below right] {$f(x)$};
+	\draw[red] (leftc) circle (1pt) node[above left, black] {$A$};
+	\draw[red] (rightc) circle (1pt) node[above left, black] {$B$};
+	\draw[blue,shorten >=-1cm,shorten <=-1cm] (leftc) -- (rightc);
+
+ \draw [decorate,decoration={brace,mirror,amplitude=4pt},color=green!30!black] (leftc)--(meet)
+   node [midway,anchor=north,inner sep=5pt, outer sep=1pt]{$\Delta x$};
+
+ \draw [decorate,decoration={brace,amplitude=4pt},color=violet] (rightc)--(meet)
+   node [midway,anchor=west,inner sep=5pt, outer sep=1pt]{$\Delta y$};
+
+  \spy [brown] on (1.6,0.6) in node [left] at (9.5,1);
+
+  \begin{pgfonlayer}{background layer}
+   \fill[yellow!20] (-0.5,-1) rectangle (4,3);
+  \end{pgfonlayer}
+\end{tikzpicture}
+%
+\begin{equation*}
+%\lim_{\Delta x\rightarrow 0}f(x + \Delta x) = \dfrac{\mathrm{d}f(x)}{\mathrm{d}x}
+\end{equation*}
+\end{frame}
+
 \begin{frame}[fragile]{Gory details...}
 De theme package bestaat uit
 \begin{itemize}
@@ -450,12 +506,10 @@ De theme package bestaat uit
 
 
 \begin{frame}[fragile]{Gory details...}
-Er worden drie plaatjes gebruikt
+Er wordt \'e\'en plaatje gebruikt
 \begin{itemize}
 \item Plaatje op titelpagina: \lstinline|beamerthemethuasfront.pdf|
-\item Logo Nederlands: \lstinline|beamerthemethuaslogo.pdf|
-\item Logo Engels: \lstinline|beamerthemethuaslogo-en.pdf|
-\item \alert{TODO} Plaatjes in PGF.
+\item De logo's worden in PGF afgebeeld
 \end{itemize}
 \end{frame}
 
@@ -487,6 +541,12 @@ De allerlaatste slide
 
 %% Make last slide
 \beamerthemethuasbackframe
+
+\begin{frame}{Versiebeheer}
+\begin{itemize}
+\item v1.0 -- Initial release
+\end{itemize}
+\end{frame}
 
 %%% Test slide van Jesse
 %\newdimen\efkes\efkes=12.80cm
