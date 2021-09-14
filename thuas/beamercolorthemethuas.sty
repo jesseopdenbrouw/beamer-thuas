@@ -28,8 +28,6 @@
 %%   beamercolorthemethuas.sty
 %%   beamerthemethuas-doc.tex
 %%   beamerthemethuasfront.pdf
-%%   beamerthemethuaslogo.pdf
-%%   beamerthemethuaslogo-en.pdf
 %%
 %% and the derived file beamerthemethuas-doc.pdf
 %%
@@ -48,13 +46,14 @@
 \definecolor{thuasred}{RGB}{202,67,60}
 
 %% Colors
+\setbeamercolor*{alerted text}{fg=thuasred}
+
 \setbeamercolor*{title page header}{fg=thuasgray}
 \setbeamercolor*{author}{fg=thuasgray}
 \setbeamercolor*{date}{fg=thuasgray}
-\setbeamercolor*{frametitle}{fg=thuasgreen}
-\setbeamercolor*{block title}{fg=thuasgreen}
+\setbeamercolor*{frametitle}{fg=\beamerthemethuascolor}
+\setbeamercolor*{block title}{fg=\beamerthemethuascolor}
 %\setbeamercolor*{block title}{use=structure,fg=white,bg=thuasgreen}
-\setbeamercolor*{alerted text}{fg=thuasred}
 \setbeamercolor*{enumerate item}{fg=thuasgray}
 \setbeamercolor*{enumerate subitem}{fg=thuasgray}
 \setbeamercolor*{enumerate subsubitem}{fg=thuasgray}
@@ -65,7 +64,7 @@
 \setbeamercolor*{normal text}{fg=thuasgray}
 \setbeamercolor*{page number in head/foot}{fg=thuasgray}
 \setbeamercolor*{caption name}{fg=thuasgray}
-\setbeamercolor*{qed symbol}{fg=thuasgreen}
+\setbeamercolor*{qed symbol}{fg=\beamerthemethuascolor}
 \setbeamercolor*{description item}{fg=thuasgray}
 
 \mode<all>
