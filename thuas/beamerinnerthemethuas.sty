@@ -28,18 +28,12 @@
 %%   beamercolorthemethuas.sty
 %%   beamerthemethuas-doc.tex
 %%   beamerthemethuasfront.pdf
-%%   beamerthemethuaslogo.pdf
-%%   beamerthemethuaslogo-en.pdf
 %%
 %% and the derived file beamerthemethuas-doc.pdf
 %%
 
 \ProvidesPackage{beamerinnerthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences inner theme]
 \typeout{The Hague University of Applied Sciences inner theme \beamerthemethuasversion\space (JodB, 2021)}
-
-%% Xe(La)TeX does some strange  things, so we need to
-%% check for it
-\usepackage{iftex}
 
 \mode<presentation>
 
@@ -66,8 +60,12 @@
 
 \setbeamerfont*{caption}{size=\footnotesize}
 
+\setbeamerfont*{author}{size=\large}
+\setbeamerfont*{date}{size=\large}
+
 \setbeamerfont*{description item}{series=\bfseries,size=\normalsize}
 
+%% Remove skips with figure and table
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
 
@@ -108,14 +106,14 @@
     \begin{tikzpicture}
       \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
       \node at (0.5,1.5) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-      \node at (4.60,-2.5) {\includegraphics[scale=0.39]{\beamerthemethuaslogo}};
+      \node at (4.60,-2.5) {\resizebox{0.29\paperwidth}{!}{\beamerthemethuaslogo}};
     \end{tikzpicture}
   % 16:9
   \else
     \begin{tikzpicture}
       \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
       \node at (0.1,1.1) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-      \node at (4.60,-2.5) {\includegraphics[scale=0.39]{\beamerthemethuaslogo}};
+      \node at (4.60,-2.5) {\resizebox{0.29\paperwidth}{!}{\beamerthemethuaslogo}};
     \end{tikzpicture}
   \fi
 
@@ -131,7 +129,7 @@
       \usebeamerfont{author}\insertauthor%
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{date}
-      \usebeamerfont{author}\insertdate%
+      \usebeamerfont{date}\insertdate%
     \end{beamercolorbox}%
   \else
   %% 16:9
@@ -144,7 +142,7 @@
       \usebeamerfont{author}\insertauthor%
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=12cm,leftskip=0.0cm,sep=1pt]{date}
-      \usebeamerfont{author}\insertdate%
+      \usebeamerfont{date}\insertdate%
     \end{beamercolorbox}%
   \fi
   \vfill
