@@ -33,7 +33,7 @@
 %%
 
 %% Use ``dutch'' as class option
-\documentclass[fleqn,aspectratio=169,dutch]{beamer}
+\documentclass[fleqn,aspectratio=169,dutch,10pt]{beamer}
 
 %% Babel is needed for correct translations
 %% It needs the ``dutch'' option
@@ -94,7 +94,10 @@
 \item Daarna laadt je de theme met: \lstinline|\usetheme[|\emph{\small opties}\lstinline|]{thuas}|
 \item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
 \item Werkt met Nederlands en Engels
-\item De titelpagina is niet conform de regels, maar komt in de buurt
+\item De titelpagina is conform de regels
+\begin{itemize}
+\item Wil je het oude format, gebruik \lstinline|\usetheme[original]{thuas}|
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -108,6 +111,7 @@
 \item Maar sommige beamers werken nog met 4:3, dus:
 \begin{itemize}
 \item Gebruik \lstinline|\documentclass[aspectratio=43]{beamer}|
+\item Wordt niet actief ondersteund
 \end{itemize}
 \item Er zijn nog andere formaten maar die worden niet ondersteund
 \item Er zijn verschillen in de titelpagina tussen 16:9 en 4:3
@@ -146,6 +150,8 @@
 \begin{itemize}
 \item 8pt, 9pt, 10pt, 11pt (default), 12pt, 14pt, 17pt en 20pt.
 \item 10pt en 11pt zijn de meest gangbare varianten.
+\item 10pt komt het dichtst in de buurt van de PowerPoint-versie.
+\item Deze slides zijn gemaakt met 10pt.
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -161,7 +167,7 @@ en
 \end{lstlisting}
 Dan worden environments als \lstinline|theorem| en \lstinline|proof| van de correcte namen voorzien
 
-\alert{TODO}: automatisch laden van \lstinline|babel| met \lstinline|dutch| of \lstinline|english|
+%\alert{TODO}: automatisch laden van \lstinline|babel| met \lstinline|dutch| of \lstinline|english|
 \end{frame}
 
 
@@ -172,6 +178,7 @@ Xe\LaTeX{} en Lua\LaTeX:
 \item Het standaard font voor formules is Cambria Math
 \item Het standaard font voor programmacode is Consolas
 \item Deze fonts worden automatisch geladen
+\item Voor Linux-gebruikers: zorg dat deze fonts beschikbaar zijn
 \item Wil je andere fonts gebruiken, gebruik dan \lstinline|\usetheme[vanilla]{thuas}|
 \end{itemize}
 \end{frame}
@@ -191,9 +198,9 @@ pdf\LaTeX{}:
 
 \begin{frame}[fragile]{THUAS Beamer Slides}
 \begin{itemize}
-\item Subtitel op titelpagina wordt \emph{niet} weergegeven
+\item Subtitel op titelpagina wordt weergegeven
 \begin{itemize}
-\item Deze subtitel wordt gewoon genegeerd
+\item Niet bij de originele setting
 \end{itemize}
 \item Subtitels op frames worden \emph{niet} weergegeven
 \begin{itemize}
@@ -222,7 +229,8 @@ pdf\LaTeX{}:
 \end{itemize}
 \item Als je het totaal aantal slides naast het slidenummer wil gebruiken
 \begin{itemize}
-\item Gebruik \lstinline|\usetheme[numpages]{thuas}|
+\item Gebruik \lstinline|\usetheme[numframes]{thuas}|
+\item Beamer spreekt van \textsl{frames}
 \item Werkt niet lekker met voetnoten
 \end{itemize}
 \end{itemize}
@@ -290,9 +298,12 @@ K=\displaystyle{\frac{1}{2}m_1 L_1^2 \dot{\theta_1}^2+\frac{1}{2} m_2[L_1^2 \dot
 Voorbeeld met een \texttt{itemize} en gaat tot drie niveaus diep.
 \begin{itemize}
 \item item
+\item item
 \begin{itemize}
 \item sub item
+\item sub item
 \begin{itemize}
+\item sub sub item
 \item sub sub item
 \end{itemize}
 \end{itemize}
@@ -487,7 +498,7 @@ De theme package bestaat uit
 \begin{itemize}
 \item \texttt{beamerthemethuas.sty}
 \begin{itemize}
-\item Deze moet je aanroepen met \lstinline|\usetheme{thuas}|
+\item Deze moet je aanroepen met \lstinline|\usetheme[|\textsl{opties}\lstinline|]{thuas}|
 \end{itemize}
 \item \texttt{beamercolorthemethuas.sty}
 \begin{itemize}

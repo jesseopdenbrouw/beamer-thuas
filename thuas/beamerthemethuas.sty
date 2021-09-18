@@ -50,13 +50,17 @@
 \newif\ifbeamerthemethuas@full
 \beamerthemethuas@fulltrue
 
-%% Use number of pages
-\newif\ifbeamerthemethuas@numpages
-\beamerthemethuas@numpagesfalse
+%% Use number of frames
+\newif\ifbeamerthemethuas@numframes
+\beamerthemethuas@numframesfalse
 
 %% Navigation is default off
 \newif\ifbeamerthemethuas@boolnav
 \beamerthemethuas@boolnavfalse
+
+%% More official (title page)
+\newif\ifbeamerthemethuas@official
+\beamerthemethuas@officialtrue
 
 %% Dutch (or, later, English)
 \newcommand{\beamerthemethuaslogo}{\beamerthemethuas@logodutchnocolor}
@@ -79,7 +83,7 @@
 \DeclareOption{c}{\beamer@centeredtrue}
 \DeclareOption{full}{\beamerthemethuas@fulltrue}
 \DeclareOption{vanilla}{\beamerthemethuas@fullfalse}
-\DeclareOption{numpages}{\beamerthemethuas@numpagestrue}
+\DeclareOption{numframes}{\beamerthemethuas@numframestrue}
 \DeclareOption{nav}{\beamerthemethuas@boolnavtrue}
 \DeclareOption{dutch}{\renewcommand{\beamerthemethuaslogo}{\beamerthemethuas@logodutchnocolor}}
 \DeclareOption{english}{\renewcommand{\beamerthemethuaslogo}{\beamerthemethuas@logoenglishnocolor}}
@@ -88,6 +92,8 @@
 \DeclareOption{gray}{\renewcommand{\beamerthemethuascolor}{thuasgray}}
 \DeclareOption{grey}{\renewcommand{\beamerthemethuascolor}{thuasgray}}
 \DeclareOption{black}{\renewcommand{\beamerthemethuascolor}{black}}
+\DeclareOption{official}{\beamerthemethuas@officialtrue}
+\DeclareOption{original}{\beamerthemethuas@officialfalse}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
@@ -173,7 +179,7 @@
   \ifbeamerthemethuaslogo
     \ifnum\theframenumber>1\relax
 %      \includegraphics[scale=0.39]{\beamerthemethuaslogo}\hspace*{3ex}%
-      \resizebox{0.25\paperwidth}{!}{\beamerthemethuaslogo}\hspace*{3ex}%
+      \resizebox{0.220\paperwidth}{!}{\beamerthemethuaslogo}\hspace*{3ex}%
     \fi
   \fi
 }
