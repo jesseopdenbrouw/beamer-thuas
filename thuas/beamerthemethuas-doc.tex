@@ -540,6 +540,22 @@ number not in the first $p$ numbers.
 \end{proof}
 \end{frame}
 
+%% Effe tijdelijk zodat we \end{frame} kunnen gebruiken
+\newenvironment{xframe}
+  {\begin{frame}[fragile,environment=xframe]}
+  {\end{frame}}
+
+\begin{xframe}
+\frametitle{Weetjes}
+\begin{itemize}
+\item Om ervoor te zorgen dat bij \lstinline|lstlisting| geen ruimte n\'a de code volgt, gebruik dan
+\lstinline|\begin{lstlisting}[caption=]|
+\item Om ruimte te laten tussen twee \lstinline|item|s, gebruik \lstinline|\item []|
+\item Gebruik \lstinline|\usepackage{parskip}| niet! De interline ruimte wordt dan aangepast
+\item Gebruik \lstinline|\maketitle| voor de titelpagina
+\end{itemize}
+\end{xframe}
+
 \begin{frame}[fragile]{Allerlaaste slide}
 De allerlaatste slide
 \begin{itemize}
