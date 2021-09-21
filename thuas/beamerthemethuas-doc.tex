@@ -151,6 +151,7 @@
 \item 8pt, 9pt, 10pt, 11pt (default), 12pt, 14pt, 17pt en 20pt.
 \item 10pt en 11pt zijn de meest gangbare varianten.
 \item 10pt komt het dichtst in de buurt van de PowerPoint-versie.
+\item Voor 8pt, 9pt, 14pt, 17pt en 20pt moet de \lstinline|extsize| package geinstalleerd zijn.
 \item Deze slides zijn gemaakt met 10pt.
 \end{itemize}
 \end{itemize}
@@ -521,6 +522,14 @@ Er wordt \'e\'en plaatje gebruikt
 \begin{itemize}
 \item Plaatje op titelpagina: \lstinline|beamerthemethuasfront.pdf|
 \item De logo's worden in PGF afgebeeld
+\item []
+\item De positie van de titel op een frame wordt getypeset door drie \lstinline|length|s
+\begin{itemize}
+\item \lstinline|\beamerthemethuastitleoffset|: offset vanaf de bovenkant, 0,7 cm
+\item \lstinline|\beamerthemethuastitleheight|: hoogte van de titel, 2,25 ex
+\item \lstinline|\beamerthemethuastitledepth|: diepte van de titel, 2,5 ex
+\item Gebruik \lstinline|\setlength{...}{...}| om de \lstinline|length| aan te passen
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -540,28 +549,26 @@ number not in the first $p$ numbers.
 \end{proof}
 \end{frame}
 
-%% Effe tijdelijk zodat we \end{frame} kunnen gebruiken
-\newenvironment{xframe}
-  {\begin{frame}[fragile,environment=xframe]}
-  {\end{frame}}
-
-\begin{xframe}
+\begin{frame}[fragile]
 \frametitle{Weetjes}
 \begin{itemize}
 \item Om ervoor te zorgen dat bij \lstinline|lstlisting| geen ruimte n\'a de code volgt, gebruik dan
 \lstinline|\begin{lstlisting}[caption=]|
 \item Om ruimte te laten tussen twee \lstinline|item|s, gebruik \lstinline|\item []|
-\item Gebruik \lstinline|\usepackage{parskip}| niet! De interline ruimte wordt dan aangepast
-\item Gebruik \lstinline|\maketitle| voor de titelpagina
+\begin{itemize}
+\item Of gebruik \lstinline|medskip|, \lstinline|bigskip|
 \end{itemize}
-\end{xframe}
+\item Gebruik \lstinline|\usepackage{parskip}| niet! De interline ruimte wordt dan aangepast
+\item Gebruik \lstinline|\maketitle| voor de titelpagina, niet in een \lstinline|frame| environment!
+\end{itemize}
+\end{frame}
 
 \begin{frame}[fragile]{Allerlaaste slide}
 De allerlaatste slide
 \begin{itemize}
 \item Je kan een allerlaatste slide automatisch maken met \lstinline|\beamerthemethuasbackframe|
 \item In de resulterende PDF zie je dan vier verschillende slides.
-\item Bij het \textsl{afspelen} met Acrobat of een \textsl{PDF aware} presenter worden de slides automatisch na elkaar afgespeed met steeds een seconde vertraging
+\item Bij het \textsl{afspelen} met Acrobat of een \textsl{PDF aware} presenter worden de slides automatisch na elkaar afgespeeld met steeds een seconde vertraging
 \end{itemize}
 
 \end{frame}
@@ -574,6 +581,7 @@ De allerlaatste slide
 \item \beamerthemethuasversion\ -- Initial release
 \end{itemize}
 \end{frame}
+
 
 %%% Test slide van Jesse
 %\newdimen\efkes\efkes=12.80cm
