@@ -94,6 +94,7 @@
 \DeclareOption{grey}{\renewcommand{\beamerthemethuascolor}{thuasgray}}
 \DeclareOption{black}{\renewcommand{\beamerthemethuascolor}{black}}
 \DeclareOption{official}{\beamerthemethuas@officialtrue}
+\DeclareOption{reallyofficial}{\beamerthemethuas@officialtrue\addtobeamertemplate{background canvas}{\transfade[duration=1]}{}}
 \DeclareOption{original}{\beamerthemethuas@officialfalse}
 
 %% Process options, ignore unknown
