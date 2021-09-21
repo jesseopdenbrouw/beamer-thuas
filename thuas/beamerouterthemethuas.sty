@@ -92,12 +92,30 @@
   \fi
 }
 
-% Frame title
+%% Some parameters to set the frame title
+%% Can be changed by user
+\newlength{\beamerthemethuastitleoffset}
+\setlength{\beamerthemethuastitleoffset}{0.7cm}
+\newlength{\beamerthemethuastitleheight}
+\setlength{\beamerthemethuastitleheight}{2.25ex}
+\newlength{\beamerthemethuastitledepth}
+\setlength{\beamerthemethuastitledepth}{2.5ex}
+
+%% Frame title, \strut makes all titles have the same height and depth
 \defbeamertemplate*{frametitle}{thuas}
 {
-\vskip1cm%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0cm]{frametitle} 
-  \hspace*{\beamer@leftmargin}\vspace*{2ex}\insertframetitle
+  \vspace*{\beamerthemethuastitleoffset}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[wd=\the\@tempdima,
+                         left,
+                         ht=\beamerthemethuastitleheight,
+                         dp=\beamerthemethuastitledepth,
+                         sep=0pt,
+                         leftskip=\the\beamer@leftmargin,
+                        ]{frametitle} 
+  \strut\insertframetitle
   \end{beamercolorbox}
 }
 
