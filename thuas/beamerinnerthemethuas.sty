@@ -73,8 +73,8 @@
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
 
-% More room between sole lines and list env.
-%https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
+%% More room between sole lines and list env.
+%% https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
 \setlength{\parskip}{1ex}
 
 \setlength\leftmargini  {1.5em}
@@ -106,7 +106,8 @@
 \setbox0=\hbox{\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}}
 \pictoffset\paperwidth\advance\pictoffset-\wd0\pictoffset=2\pictoffset
 
-% Title page
+%% Title page
+%% It needs a lot of dimension hacks to get the title page right
 \defbeamertemplate*{title page}{thuas}
 {%
   %% Very dirty hack to test if we use 16:9 or 4:3
@@ -123,7 +124,8 @@
     \end{beamercolorbox}%
     \vskip0.25cm%
     \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{author}%
-      \usebeamerfont{author}\insertauthor%
+      %% Dirty color hack for not supported 4:3 aspect ratio
+      \usebeamerfont{author}\color{thuasgray}\insertauthor%
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{date}
       \usebeamerfont{date}\insertdate%
@@ -135,28 +137,28 @@
       \node at (\pictoffset,3.4) {\includegraphics[width=0.855\paperwidth]{beamerthemethuasfront.pdf}};
       \node at (10.9,-0.5) {\resizebox{0.26\paperwidth}{!}{\beamerthemethuaslogo}};
       \ifbeamerthemethuas@official
-        \node[align=left,text width=4.0cm,anchor=north west] at (8.75,3.2) {\usebeamerfont{author}\color{white}\insertauthor};
+        \node[align=left,text width=4.0cm,anchor=north west] at (8.75,3.2) {\usebeamerfont{author}\color{white}\insertauthor}; % TODO: remove dirty hack for white
         \node[align=left,text width=4.0cm,anchor=south west] at (8.75,3.3) {\usebeamerfont{date}\insertdate};
       \fi
     \end{tikzpicture}
     \ifbeamerthemethuas@official
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=1pt]{title page header}%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=0pt]{title page header}%
         \usebeamerfont{title}\inserttitle%
       \end{beamercolorbox}%
-      \vskip0.25cm%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=1pt]{sub title}%
+      \vskip0.20cm%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=0pt]{sub title}%
         \usebeamerfont{sub title}\insertsubtitle%
       \end{beamercolorbox}%
     \else
       \vskip-0.25cm%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=1pt]{title page header}%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=0pt]{title page header}%
         \usebeamerfont{title}\inserttitle%
       \end{beamercolorbox}%
-      \vskip0.25cm%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=1pt]{author}%
+      \vskip0.20cm%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=0pt]{author}%
         \usebeamerfont{author}\insertauthor%
       \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=1pt]{date}
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.6cm,sep=0pt]{date}
         \usebeamerfont{date}\insertdate%
       \end{beamercolorbox}%
     \fi
