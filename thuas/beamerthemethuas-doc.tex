@@ -44,7 +44,7 @@
 %\usepackage{showframe}
 
 %% The THUAS beamer style, loads the correct fonts
-\usetheme[nav]{thuas}
+\usetheme[nav,moreofficial]{thuas}
 
 %% PGFplots
 \usepackage{pgfplots}
@@ -96,7 +96,7 @@
 \item Daarna laadt je de theme met: \lstinline|\usetheme[|\emph{\small opties}\lstinline|]{thuas}|
 \item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
 \item Werkt met Nederlands en Engels
-\item De titelpagina is conform de regels
+\item De titelslide is conform de regels
 \begin{itemize}
 \item Wil je het oude format, gebruik \lstinline|\usetheme[original]{thuas}|
 \end{itemize}
@@ -117,9 +117,9 @@
 \item Wordt niet actief ondersteund
 \end{itemize}
 \item Er zijn nog andere formaten maar die worden niet ondersteund
-\item Er zijn verschillen in de titelpagina tussen 16:9 en 4:3
+\item Er zijn verschillen in de titelslide tussen 16:9 en 4:3
 \begin{itemize}
-\item Dat komt o.a.\@ door het plaatsen van het plaatje op de titelpagina
+\item Dat komt o.a.\@ door het plaatsen van het plaatje op de titelslide
 \end{itemize}
 \item Er zijn verschillen tussen Xe-, Lua- en pdf\LaTeX
 \begin{itemize}
@@ -136,15 +136,16 @@
 \item Nederlands is de standaard taal.
 \begin{itemize}
 \item Gebruik \lstinline|\usetheme[dutch]{thuas}|.
-\item Op de titelpagina en in de slides wordt dan het Nederlandse logo gebruikt.
+\item Op de titelslide en in de slides wordt dan het Nederlandse logo gebruikt.
 \end{itemize}
 \item Engels kan ook gebruikt worden.
 \begin{itemize}
 \item Gebruik \lstinline|\usetheme[english]{thuas}|.
-\item Op de titelpagina en in de slides wordt dan het Engelse logo gebruikt.
+\item Op de titelslide en in de slides wordt dan het Engelse logo gebruikt.
 \end{itemize}
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
@@ -161,6 +162,7 @@
 \end{itemize}
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
@@ -208,7 +210,7 @@ pdf\LaTeX{}:
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
-\item Subtitel op titelpagina wordt weergegeven
+\item Subtitel op titelslide wordt weergegeven
 \begin{itemize}
 \item Niet bij de originele setting
 \end{itemize}
@@ -247,6 +249,7 @@ pdf\LaTeX{}:
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
@@ -262,12 +265,13 @@ pdf\LaTeX{}:
 \end{itemize}
 \end{frame}
 
+
 \beamerthemethuaslogofalse
 
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
-\item Standaard wordt het logo rechtsonder weergegeven, behalve bij de titelpagina
+\item Standaard wordt het logo rechtsonder weergegeven, behalve bij de titelslide
 \item Het logo kan je uitzetten met \lstinline|\beamerthemethuaslogofalse|
 \item Het logo blijft dan uit
 \item Het logo kan je aanzetten met \lstinline|\beamerthemethuaslogotrue|
@@ -282,16 +286,18 @@ pdf\LaTeX{}:
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
-\item Soms wil je een tweede titelpagina maken, bijvoorbeeld voor de tweede les, maar de slides bij elkaar houden.
-\item Gebruik dan \lstinline|\maketitleagain|
+\item Soms wil je een tweede titelslide maken, bijvoorbeeld voor de tweede les, maar de slides bij elkaar houden.
+\item Gebruik gewoon \lstinline|\maketitle|
 \begin{lstlisting}
 \subtitle{Tweede les: kwantumfysica}
-\maketitleagain
+\author{N. Bohr en A. Einstein}
+\maketitle
 \end{lstlisting}
-\item Dit zorgt ervoor dat het paginanummer en het logo worden onderdrukt.
-\item Als je \emph{eerste} pagina geen titelpagina is, gebruik dan \lstinline|\maketitleagain|
+\item Het logo en het slidenummer worden dan onderdrukt
 \end{itemize}
 \end{frame}
+
+
 \begin{frame}
 \frametitle{Formules kunnen ook}
 \begin{itemize}
@@ -323,7 +329,6 @@ K=\displaystyle{\frac{1}{2}m_1 L_1^2 \dot{\theta_1}^2+\frac{1}{2} m_2[L_1^2 \dot
 
 \begin{frame}
 \frametitle{Voorbeeld met een itemize}
-
 Voorbeeld met een \texttt{itemize} en gaat tot drie niveaus diep.
 \begin{itemize}
 \item item
@@ -425,6 +430,28 @@ int main(void) {
 \end{lstlisting}
 
 Moet gebruikt worden voor alle verbatim code! Niet getest met \lstinline|minted|
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Codefragment stap voor stap}
+Een codefragment stap voor stap laten zien, kan door binnen een \lstinline|listing| de optie \lstinline|mathescape| te gebruiken. Zet de listing als volgt op:
+\begin{lstlisting}[caption=]
+\begin{lstlisting}[mathescape]
+\end{lstlisting}
+
+en gebruik daarna \lstinline|$\pause$| aan het begin van elke regel. Witregels kunnen zonder de pauze. Let op: je kan nu geen \lstinline|$| gebruiken in je code!
+
+\begin{lstlisting}[caption=,mathescape]
+int main(void)
+$\pause${
+$\pause$   int i = 5;
+
+$\pause$   printf("i = %d\n", i);
+
+$\pause$   return 0;
+$\pause$}
+\end{lstlisting}
 \end{frame}
 
 
@@ -574,7 +601,7 @@ De theme package bestaat uit
 \end{itemize}
 \item \texttt{beamerinnerthemethuas.sty}
 \begin{itemize}
-\item Hierin is de opmaak \emph{van} de inhoud gedefinieerd (ook de titelpagina)
+\item Hierin is de opmaak \emph{van} de inhoud gedefinieerd (ook de titelslide)
 \end{itemize}
 \item \texttt{beamerouterthemethuas.sty}
 \begin{itemize}
@@ -588,7 +615,7 @@ De theme package bestaat uit
 \frametitle{Gory details...}
 Er wordt \'e\'en plaatje gebruikt
 \begin{itemize}
-\item Plaatje op titelpagina: \lstinline|beamerthemethuasfront.pdf|
+\item Plaatje op titelslide: \lstinline|beamerthemethuasfront.pdf|
 \item De logo's worden in PGF afgebeeld
 \item []
 \item De positie van de titel op een frame wordt getypeset door drie \lstinline|length|s
@@ -618,6 +645,7 @@ number not in the first $p$ numbers.
 \end{proof}
 \end{frame}
 
+
 \begin{frame}[fragile]
 \frametitle{Weetjes}
 \begin{itemize}
@@ -628,9 +656,10 @@ number not in the first $p$ numbers.
 \item Of gebruik \lstinline|medskip|, \lstinline|bigskip|
 \end{itemize}
 \item Gebruik \lstinline|\usepackage{parskip}| niet! De interline ruimte wordt dan aangepast
-\item Gebruik \lstinline|\maketitle| voor de titelpagina, niet in een \lstinline|frame| environment!
+\item Gebruik \lstinline|\maketitle| voor de titelslide, niet in een \lstinline|frame| environment!
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{Allerlaaste slide}
@@ -640,14 +669,14 @@ De allerlaatste slide
 \item In de resulterende PDF zie je dan vier verschillende slides.
 \item Bij het \textsl{afspelen} met Acrobat of een \textsl{PDF aware} presenter worden de slides automatisch na elkaar afgespeeld met steeds een seconde vertraging
 \end{itemize}
-
 \end{frame}
 
 %% Make last slide
 \beamerthemethuasbackframe
 
-\subtitle{Dit is een tweede titelpagina}
+\subtitle{Dit is een tweede titelslide}
 \maketitleagain
+
 
 \begin{frame}
 \frametitle{Versiebeheer}
