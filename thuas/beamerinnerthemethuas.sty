@@ -165,10 +165,18 @@
   \fi
 }
 
-\newcommand{\maketitleagain}{{%
+%% Redefine the \maketitle macro. It now issues an error if \maketitle
+%% is wihtin a frame (\frame or frame environment)
+\def\beamerthemethuas@maketitle{\ifbeamer@inframe\PackageError{beamerthemethuas}{\string\maketitle\space in \string\frame!}{Please do not use \string\maketitle\space within a frame}\else\frame{\titlepage}\fi}
+
+%% To produce a second, third ... title page
+\renewcommand{\maketitle}{{%
+  \setbeamertemplate{sidebar left}{}
   \setbeamertemplate{logo}{}%
   \setbeamertemplate{footline}{}%
-  \maketitle%
+  \beamerthemethuas@maketitle%
 }}
+
+\let\maketitleagain\maketitle
 
 \mode<all>
