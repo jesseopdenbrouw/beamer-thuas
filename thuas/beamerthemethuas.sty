@@ -62,6 +62,10 @@
 \newif\ifbeamerthemethuas@official
 \beamerthemethuas@officialtrue
 
+%% Really official (title page, slide fades and left bar)
+\newif\ifbeamerthemethuas@reallyofficial
+\beamerthemethuas@reallyofficialfalse
+
 %% Dutch (or, later, English)
 \newcommand{\beamerthemethuaslogo}{\beamerthemethuas@logodutchnocolor}
 
@@ -77,8 +81,18 @@
 %% t: top-aligned slides
 %% full: load fonts
 %% vanilla: don't load fonts
-%% numpages: inject number of slides with slide number
+%% numframes: inject number of slides with slide number
 %% nav: enable navigation
+%% dutch: select dutch logo
+%% english: select english logo
+%% nologo: disable logo
+%% green: select THUAS green
+%% gray/grey: select THUAS gray
+%% black: select black
+%% official: official title page
+%% moreoffcial: include green polygon on the left
+%% reallyofficial: include frame transfade
+%% original: original title page
 \DeclareOption{t}{\beamer@centeredfalse}
 \DeclareOption{c}{\beamer@centeredtrue}
 \DeclareOption{full}{\beamerthemethuas@fulltrue}
@@ -94,8 +108,9 @@
 \DeclareOption{grey}{\renewcommand{\beamerthemethuascolor}{thuasgray}}
 \DeclareOption{black}{\renewcommand{\beamerthemethuascolor}{black}}
 \DeclareOption{official}{\beamerthemethuas@officialtrue}
-\DeclareOption{reallyofficial}{\beamerthemethuas@officialtrue\addtobeamertemplate{background canvas}{\transfade[duration=1]}{}}
-\DeclareOption{original}{\beamerthemethuas@officialfalse}
+\DeclareOption{moreofficial}{\beamerthemethuas@reallyofficialtrue\beamerthemethuas@officialtrue}
+\DeclareOption{reallyofficial}{\beamerthemethuas@reallyofficialtrue\beamerthemethuas@officialtrue\addtobeamertemplate{background canvas}{\transfade[duration=1]}{}}
+\DeclareOption{original}{\beamerthemethuas@officialfalse\beamerthemethuas@reallyofficialfalse}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
@@ -185,13 +200,6 @@
   \fi
 }
 
-%% Can't be used right now, because the left sidebar is also shown on the title page
-%\setbeamertemplate{sidebar left}{%
-%\begin{tikzpicture}
-%\node at (0,0) {};
-%\draw[thuasgreen, fill=thuasgreen] (0,-2) -- ++(1,-0.5) -- ++(0,-1) -- ++(-1,-0.125) -- cycle;
-%\end{tikzpicture}
-%}
 
 %% Only for 16:9
 \ifdim\beamer@paperwidth<12.81cm
