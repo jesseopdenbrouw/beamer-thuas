@@ -44,7 +44,7 @@
 %\usepackage{showframe}
 
 %% The THUAS beamer style, loads the correct fonts
-\usetheme[nav,moreofficial]{thuas}
+\usetheme[nav,official]{thuas}
 
 %% PGFplots
 \usepackage{pgfplots}
@@ -294,6 +294,17 @@ pdf\LaTeX{}:
 \maketitle
 \end{lstlisting}
 \item Het logo en het slidenummer worden dan onderdrukt
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{THUAS Beamer Slides}
+\begin{itemize}
+\item Officieel?
+\item Gebruik \lstinline|\usetheme[official]{thuas}| voor een offici\"ele titelpagina.
+\item Gebruik \lstinline|\usetheme[moreofficial]{thuas}| om aan de linkerkant de THUAS-groene polygon te krijgen.
+\item Gebruik \lstinline|\usetheme[realyofficial]{thuas}| om ook nog een \textsl{transfade} tussen twee slides te krijgen.
 \end{itemize}
 \end{frame}
 
@@ -589,7 +600,7 @@ Let op: \texttt{siunitx} typesets in math-mode!
 
 \begin{frame}[fragile]
 \frametitle{Gory details...}
-De theme package bestaat uit
+De theme package bestaat uit:
 \begin{itemize}
 \item \texttt{beamerthemethuas.sty}
 \begin{itemize}
@@ -597,15 +608,15 @@ De theme package bestaat uit
 \end{itemize}
 \item \texttt{beamercolorthemethuas.sty}
 \begin{itemize}
-\item Hierin zijn de kleuren gedefinieerd
+\item Hierin zijn de kleuren gedefinieerd. Deze kan je aanroepen.
 \end{itemize}
 \item \texttt{beamerinnerthemethuas.sty}
 \begin{itemize}
-\item Hierin is de opmaak \emph{van} de inhoud gedefinieerd (ook de titelslide)
+\item Hierin is de opmaak \emph{van} de inhoud gedefinieerd (ook de titelslide). Niet aanroepen.
 \end{itemize}
 \item \texttt{beamerouterthemethuas.sty}
 \begin{itemize}
-\item Hierin is de opmaak \emph{rond} de inhoud gedefinieerd (header, footer)
+\item Hierin is de opmaak \emph{rond} de inhoud gedefinieerd (header, footer). Niet aanroepen.
 \end{itemize}
 \end{itemize}
 \end{frame}
