@@ -84,20 +84,22 @@
 \setlength  \labelwidth{\leftmargini}
 \addtolength\labelwidth{-\labelsep}
 
-\def\@listi{\leftmargin\leftmargini
-            \topsep 0\p@ \@plus2\p@ \@minus2.5\p@
-            \parsep 3\p@
-            \itemsep3\p@ \@plus2\p@ \@minus3\p@}
-\let\@listI\@listi
-\def\@listii{\leftmargin\leftmarginii
-              \topsep    0\p@ \@plus1\p@ \@minus2\p@
-              \parsep    1\p@   \@plus\p@
-              \itemsep   \parsep}
-\def\@listiii{\leftmargin\leftmarginiii
-              \topsep    0\p@ \@plus1\p@ \@minus2\p@
-              \parsep    1\p@   \@plus\p@
-              \itemsep   \parsep}
-
+%% Tight or loose spacing?
+\ifbeamerthemethuas@loose
+  \def\@listi{\leftmargin\leftmargini
+              \topsep 0\p@ \@plus2\p@ \@minus2.5\p@
+              \parsep 3\p@
+              \itemsep3\p@ \@plus2\p@ \@minus3\p@}
+  \let\@listI\@listi
+  \def\@listii{\leftmargin\leftmarginii
+                \topsep    0\p@ \@plus1\p@ \@minus2\p@
+                \parsep    1\p@   \@plus\p@
+                \itemsep   \parsep}
+  \def\@listiii{\leftmargin\leftmarginiii
+                \topsep    0\p@ \@plus1\p@ \@minus2\p@
+                \parsep    1\p@   \@plus\p@
+                \itemsep   \parsep}
+\fi
 
 %% For bounding box of image
 \newdimen\tph\tph=0.7\paperheight
