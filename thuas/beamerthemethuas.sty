@@ -66,6 +66,10 @@
 \newif\ifbeamerthemethuas@reallyofficial
 \beamerthemethuas@reallyofficialfalse
 
+%% Loose or tight spacing, loose the default
+\newif\ifbeamerthemethuas@loose
+\beamerthemethuas@loosetrue
+
 %% Dutch (or, later, English)
 \newcommand{\beamerthemethuaslogo}{\beamerthemethuas@logodutchnocolor}
 
@@ -93,6 +97,8 @@
 %% moreoffcial: include green polygon on the left
 %% reallyofficial: include frame transfade
 %% original: original title page
+%% tight: tight spacing between \item's
+%% loose: standard spacing between \item's
 \DeclareOption{t}{\beamer@centeredfalse}
 \DeclareOption{c}{\beamer@centeredtrue}
 \DeclareOption{full}{\beamerthemethuas@fulltrue}
@@ -111,6 +117,8 @@
 \DeclareOption{moreofficial}{\beamerthemethuas@reallyofficialtrue\beamerthemethuas@officialtrue}
 \DeclareOption{reallyofficial}{\beamerthemethuas@reallyofficialtrue\beamerthemethuas@officialtrue\addtobeamertemplate{background canvas}{\transfade[duration=1]}{}}
 \DeclareOption{original}{\beamerthemethuas@officialfalse\beamerthemethuas@reallyofficialfalse}
+\DeclareOption{loose}{\beamerthemethuas@loosetrue}
+\DeclareOption{tight}{\beamerthemethuas@loosefalse}
 
 %% Process options, ignore unknown
 \ProcessOptions\relax
