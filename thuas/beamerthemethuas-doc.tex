@@ -84,7 +84,7 @@
 %%
 \begin{document}
 
-%% Title page
+%% Title slide must not appear in a frame environment!
 \maketitle
 
 
@@ -96,9 +96,9 @@
 \item Daarna laadt je de theme met: \lstinline|\usetheme[|\emph{\small opties}\lstinline|]{thuas}|
 \item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
 \item Werkt met Nederlands en Engels
-\item De titelslide is conform de regels
+\item Gebruik \lstinline|\maketitle| voor de titelslide.
 \begin{itemize}
-\item Wil je het oude format, gebruik \lstinline|\usetheme[original]{thuas}|
+\item Mag niet in een \lstinline|frame| environment!
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -287,13 +287,14 @@ pdf\LaTeX{}:
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
 \item Soms wil je een tweede titelslide maken, bijvoorbeeld voor de tweede les, maar de slides bij elkaar houden.
-\item Gebruik gewoon \lstinline|\maketitle|
+\item Gebruik gewoon \lstinline|\maketitle|:
 \begin{lstlisting}
 \subtitle{Tweede les: kwantumfysica}
 \author{N. Bohr en A. Einstein}
 \maketitle
 \end{lstlisting}
-\item Het logo en het slidenummer worden dan onderdrukt
+\item Het logo en het slidenummer worden dan onderdrukt.
+\item \lstinline|\maketitle| mag niet in een \lstinline|frame| environment!
 \end{itemize}
 \end{frame}
 
@@ -301,8 +302,11 @@ pdf\LaTeX{}:
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
-\item Officieel?
-\item Gebruik \lstinline|\usetheme[official]{thuas}| voor een offici\"ele titelpagina.
+\item Verschillende offici\"ele versies.
+\item Gebruik \lstinline|\usetheme[official]{thuas}| voor een offici\"ele titelslide.
+\begin{itemize}
+\item Is de default waarde, dus je kan het ook weglaten.
+\end{itemize}
 \item Gebruik \lstinline|\usetheme[moreofficial]{thuas}| om aan de linkerkant de THUAS-groene polygon te krijgen.
 \item Gebruik \lstinline|\usetheme[realyofficial]{thuas}| om ook nog een \textsl{transfade} tussen twee slides te krijgen.
 \end{itemize}
@@ -605,6 +609,7 @@ De theme package bestaat uit:
 \item \texttt{beamerthemethuas.sty}
 \begin{itemize}
 \item Deze moet je aanroepen met \lstinline|\usetheme[|\textsl{opties}\lstinline|]{thuas}|
+\item Deze package definieert een aantal macro's
 \end{itemize}
 \item \texttt{beamercolorthemethuas.sty}
 \begin{itemize}
@@ -662,7 +667,7 @@ number not in the first $p$ numbers.
 \begin{itemize}
 \item Om ervoor te zorgen dat bij \lstinline|lstlisting| geen ruimte n\'a de code volgt, gebruik dan
 \lstinline|\begin{lstlisting}[caption=]|
-\item Om ruimte te laten tussen twee \lstinline|item|s, gebruik \lstinline|\item []|
+\item Om extra ruimte te laten tussen twee \lstinline|item|s, gebruik \lstinline|\item []|
 \begin{itemize}
 \item Of gebruik \lstinline|medskip|, \lstinline|bigskip|
 \end{itemize}
@@ -685,8 +690,10 @@ De allerlaatste slide
 %% Make last slide
 \beamerthemethuasbackframe
 
+
 \subtitle{Dit is een tweede titelslide}
-\maketitleagain
+%% Title slide must not appear in a frame environment!
+\maketitle
 
 
 \begin{frame}
