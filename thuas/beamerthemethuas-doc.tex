@@ -44,7 +44,7 @@
 %\usepackage{showframe}
 
 %% The THUAS beamer style, loads the correct fonts
-\usetheme[nav,official]{thuas}
+\usetheme[nav,moreofficial]{thuas}
 
 %% PGFplots
 \usepackage{pgfplots}
@@ -308,6 +308,9 @@ pdf\LaTeX{}:
 \item Is de default waarde, dus je kan het ook weglaten.
 \end{itemize}
 \item Gebruik \lstinline|\usetheme[moreofficial]{thuas}| om aan de linkerkant de THUAS-groene polygon te krijgen.
+\begin{itemize}
+\item De polygon schuift mee met de plaats van de titel.
+\end{itemize}
 \item Gebruik \lstinline|\usetheme[reallyofficial]{thuas}| om ook nog een \textsl{transfade} tussen twee slides te krijgen.
 \end{itemize}
 \end{frame}
@@ -402,7 +405,7 @@ Daarna wordt er ingesprongen
 \begin{itemize}
 \item Om tekst korter te maken zodat je aan de rechterkant nog ruimte over hebt voor een plaatje (of Ti\emph{k}z-figuur), gebruik dan \lstinline|minipage|. Zie het voorbeeld hieronder.
 \end{itemize}
-
+\bigskip
 \begin{minipage}{0.5\linewidth}
 \begin{itemize}
 \item In het geheugen is er nu een stukje ruimte 
@@ -454,9 +457,7 @@ Een codefragment stap voor stap laten zien, kan door binnen een \lstinline|listi
 \begin{lstlisting}[caption=]
 \begin{lstlisting}[mathescape]
 \end{lstlisting}
-
 en gebruik daarna \lstinline|$\pause$| aan het begin van elke regel. Witregels kunnen zonder de pauze. Let op: je kan nu geen \lstinline|$| gebruiken in je code!
-
 \begin{lstlisting}[caption=,mathescape]
 int main(void)
 $\pause${
@@ -640,6 +641,7 @@ Er wordt \'e\'en plaatje gebruikt
 \item \lstinline|\beamerthemethuastitleheight|: hoogte van de titel, 2.25 ex
 \item \lstinline|\beamerthemethuastitledepth|: diepte van de titel, 2.5 ex
 \item Gebruik \lstinline|\setlength{...}{...}| om een \lstinline|length| aan te passen
+\item De THUAS-polygon links schuift mee met de plaats van de titel.
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -673,6 +675,9 @@ number not in the first $p$ numbers.
 \end{itemize}
 \item Gebruik \lstinline|\usepackage{parskip}| niet! De interline ruimte wordt dan aangepast
 \item Gebruik \lstinline|\maketitle| voor de titelslide, niet in een \lstinline|frame| environment!
+\begin{itemize}
+\item \lstinline|\maketitle| is aangepast om meerdere titelslides te maken.
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -682,8 +687,14 @@ number not in the first $p$ numbers.
 De allerlaatste slide
 \begin{itemize}
 \item Je kan een allerlaatste slide automatisch maken met \lstinline|\beamerthemethuasbackframe|
-\item In de resulterende PDF zie je dan vier verschillende slides.
+\item In de resulterende PDF zie je dan drie verschillende slides.
 \item Bij het \textsl{afspelen} met Acrobat of een \textsl{PDF aware} presenter worden de slides automatisch na elkaar afgespeeld met steeds een seconde vertraging
+\item Wil je de slides ook beschikbaar houden voor andere themes, gebruik dan:
+\begin{lstlisting}[caption=]
+\ifdefined\beamerthemethuasbackframe
+\beamerthemethuasbackframe
+\fi
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
