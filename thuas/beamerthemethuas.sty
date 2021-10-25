@@ -73,7 +73,7 @@
 %% Dutch (or, later, English)
 \newcommand{\beamerthemethuaslogo}{\beamerthemethuas@logodutchnocolor}
 
-%% The color of the logos
+%% The color of the logo, frame title and polygon
 \newcommand{\beamerthemethuascolor}{thuasgreen}
 
 %% Display logo or not
@@ -177,9 +177,9 @@
 \newcommand{\beamerthemethuasbackframe}{%
   %% Set frame background color to THUAS green
   \setbeamercolor{background canvas}{bg=thuasgreen}
-  %% Begin frame, only <4> when handout
+  %% Begin frame, only <3> when handout
   %% [plain] removes header and footer
-  \begin{frame}<handout:4>[plain]
+  \begin{frame}<handout:3>[plain]
     \transduration<1>{1}
     \transduration<2>{2}
     \vspace*{0.25\paperheight}
@@ -211,7 +211,7 @@
 %% Only for 16:9
 \ifdim\beamer@paperwidth<12.81cm
 \else
-  \setbeamersize{text margin left=2cm, text margin right=2cm} 
+  \setbeamersize{text margin left=2cm, text margin right=2cm}
 \fi
 
 %% Set the desciption size based on the digits 1 to 9
