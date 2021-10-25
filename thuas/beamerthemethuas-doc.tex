@@ -91,6 +91,19 @@
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
+\item This is the unofficial release of the Beamer theme for the The Hague University of Applied Science (THUAS)
+\item First, load the beamer class: \lstinline|\documentclass{beamer}|
+\item Next, load the theme with: \lstinline|\usetheme[|\emph{\small options}\lstinline|]{thuas}|
+\item Works with \LaTeX, Xe\LaTeX en Lua\LaTeX
+\item Works with Dutch and English
+\item The remaining documentation is in Dutch
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{THUAS Beamer Slides}
+\begin{itemize}
 \item Dit is de onofficiële realisatie van slides met het THUAS-thema
 \item Eerst gebruik je de beamer-class: \lstinline|\documentclass{beamer}|
 \item Daarna laadt je de theme met: \lstinline|\usetheme[|\emph{\small opties}\lstinline|]{thuas}|
@@ -253,6 +266,22 @@ pdf\LaTeX{}:
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
+\item Er zijn diverse kleuren gedefinieerd.
+\bigskip
+\item \lstinline|thuasgreen| \textcolor{thuasgreen}{\rule{5pt}{5pt}}
+\item \lstinline|thuasgrey| \textcolor{thuasgrey}{\rule{5pt}{5pt}}
+\item \lstinline|thuasred| \textcolor{thuasred}{\rule{5pt}{5pt}}
+\item \lstinline|thuasyellow| \textcolor{thuasyellow}{\rule{5pt}{5pt}}
+\item \lstinline|thuasblue| \textcolor{thuasblue}{\rule{5pt}{5pt}}
+\bigskip
+\item Deze kunnen overal gebruikt worden waar een kleur nodig is.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{THUAS Beamer Slides}
+\begin{itemize}
 \item De standaard kleur voor slide titel en logo is groen.
 \item Je kan dit veranderen in THUAS grijs
 \begin{itemize}
@@ -261,6 +290,10 @@ pdf\LaTeX{}:
 \item Je kan dit veranderen in zwart
 \begin{itemize}
 \item Gebruik \lstinline|\usetheme[black]{thuas}|
+\end{itemize}
+\item De standaard kleur voor \emph{alerted} tekst is \lstinline|thuasred|.
+\begin{itemize}
+\item Dit kan aangepast worden: \lstinline|\setbeamercolor*{alerted text}{fg=thuasblue}|
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -488,7 +521,7 @@ De fontgrootte van de caption is \lstinline|\footnotesize|.
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Tabellen}
 Een tabel kan ook (deze is met \texttt{booktabs})
 
@@ -506,6 +539,8 @@ Aaa & Bbb & 1.24 & 2.54 \\
 \end{table}
 
 Let op: \texttt{siunitx} typesets in math-mode!
+
+De fontgrootte van de caption is \lstinline|\footnotesize|.
 \end{frame}
 
 
