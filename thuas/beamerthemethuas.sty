@@ -211,7 +211,11 @@
 %% Only for 16:9
 \ifdim\beamer@paperwidth<12.81cm
 \else
-  \setbeamersize{text margin left=2cm, text margin right=2cm}
+%  \ifbeamerthemethuas@reallyofficial
+%    \setbeamersize{text margin left=3cm, text margin right=2cm}
+%  \else
+    \setbeamersize{text margin left=2.2cm, text margin right=2cm}
+%  \fi
 \fi
 
 %% Set the desciption size based on the digits 1 to 9
