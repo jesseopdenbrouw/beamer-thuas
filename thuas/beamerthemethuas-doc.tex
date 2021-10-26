@@ -109,10 +109,6 @@
 \item Daarna laadt je de theme met: \lstinline|\usetheme[|\emph{\small opties}\lstinline|]{thuas}|
 \item Het werkt met \LaTeX, Xe\LaTeX en Lua\LaTeX
 \item Werkt met Nederlands en Engels
-\item Gebruik \lstinline|\maketitle| voor de titelslide.
-\begin{itemize}
-\item Mag niet in een \lstinline|frame| environment!
-\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -461,10 +457,33 @@ a = 26;
 \end{frame}
 
 
+\begin{frame}[fragile]
+\frametitle{Bredere slide}
+\begin{itemize}
+\item De breedte (lees: right margin) is al vrij breed, maar soms will je toch iets meer kwijt op een regel.
+\item De meest eenvoudige optie is om een \lstinline|minipage| environment te gebruiken:
+\begin{lstlisting}[caption=]
+\begin{minipage}{1.05\textwidth}
+lol lol lol lol lol lol ...
+\end{minipage}
+\end{lstlisting}
+
+\item Dat ziet er dan uit als:
+
+\medskip
+\begin{minipage}{1.05\textwidth}
+\item lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol
+\end{minipage}
+
+\item Nadeel: de skip aan het begin is niet netjes, dus die moet je handmatig bijwerken met \lstinline|\medskip|
+\end{itemize}
+\end{frame}
+
+
 %% A frame with a listing NEEDS fragile
 \begin{frame}[fragile]
 \frametitle{Een frame met code}
-Een frame met daarin code met \texttt{lstlistings} moet getypeerd worden met \texttt{fragile}, anders werkt het niet
+Een frame met daarin code met \texttt{lstlistings} moet getypeerd worden met \texttt{fragile}, anders werkt het niet:
 
 \begin{lstlisting}
 \begin{frame}[fragile]{Titel}
@@ -480,7 +499,7 @@ int main(void) {
 }
 \end{lstlisting}
 
-Moet gebruikt worden voor alle verbatim code! Niet getest met \lstinline|minted|
+Moet gebruikt worden voor alle verbatim code! Niet getest met \lstinline|minted|.
 \end{frame}
 
 
