@@ -6,7 +6,7 @@
 %%
 %% The Hague University of Applied Sciences (THUAS)
 %%
-%% (c)2021 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%% (c)2022 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
 %%
 %%
 %% This work may be distributed and/or modified under the
@@ -33,12 +33,12 @@
 %%
 
 %% Version
-\newcommand{\beamerthemethuasversion}{v1.0}
-\newcommand{\beamerthemethuasdate}{2021/09/18}
+\newcommand{\beamerthemethuasversion}{v2.0}
+\newcommand{\beamerthemethuasdate}{2022/07/02}
 
 %\NeedsTeXFormat{LaTeX2e}[1995-01-01]
 \ProvidesPackage{beamerthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences theme]
-\typeout{The Hague University of Applied Sciences theme \beamerthemethuasversion\space (JodB, 2021)}
+\typeout{The Hague University of Applied Sciences theme \beamerthemethuasversion\space (JodB, 2022)}
 
 %% Requirement, loads PGF
 \RequirePackage{tikz}
@@ -74,11 +74,11 @@
 \newcommand{\beamerthemethuaslogo}{\beamerthemethuas@logodutchnocolor}
 
 %% The color of the logo, frame title and polygon
-\newcommand{\beamerthemethuascolor}{thuasgreen}
+\newcommand{\beamerthemethuascolor}{thuasgray}
 
 %% Display logo or not
 \newif\ifbeamerthemethuaslogo
-\beamerthemethuaslogotrue
+\beamerthemethuaslogofalse
 
 %% Options:
 %% c: centered slides
@@ -108,7 +108,7 @@
 \DeclareOption{nav}{\beamerthemethuas@boolnavtrue}
 \DeclareOption{dutch}{\renewcommand{\beamerthemethuaslogo}{\beamerthemethuas@logodutchnocolor}}
 \DeclareOption{english}{\renewcommand{\beamerthemethuaslogo}{\beamerthemethuas@logoenglishnocolor}}
-\DeclareOption{nologo}{\beamerthemethuaslogofalse}
+\DeclareOption{logo}{\beamerthemethuaslogotrue}
 \DeclareOption{green}{\renewcommand{\beamerthemethuascolor}{thuasgreen}}
 \DeclareOption{gray}{\renewcommand{\beamerthemethuascolor}{thuasgray}}
 \DeclareOption{grey}{\renewcommand{\beamerthemethuascolor}{thuasgray}}
@@ -176,6 +176,7 @@
 %% Simple last slide of the presentation
 \newcommand{\beamerthemethuasbackframe}{%
   %% Set frame background color to THUAS green
+  \setbeamertemplate{background}{}
   \setbeamercolor{background canvas}{bg=thuasgreen}
   %% Begin frame, only <3> when handout
   %% [plain] removes header and footer

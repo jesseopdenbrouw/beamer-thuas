@@ -6,7 +6,7 @@
 %%
 %% The Hague University of Applied Sciences (THUAS)
 %%
-%% (c)2021 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%% (c)2022 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
 %%
 %%
 %% This work may be distributed and/or modified under the
@@ -71,6 +71,7 @@
   }
 \fi
 
+
 %% The footer of the slide
 \defbeamertemplate*{footline}{thuas}
 {
@@ -79,11 +80,13 @@
   \ifnum \theframenumber>1\relax
     \leavevmode
     \hbox{%
-      \begin{beamercolorbox}[wd=0.95\paperwidth,ht=0ex,dp=0ex]{section in head/foot}%
+      \begin{beamercolorbox}[wd=0.96\paperwidth,ht=0ex,dp=0ex]{section in head/foot}%
          \ifbeamerthemethuas@numframes
-            \makebox[3.2em][r]{\raisebox{3ex}{\insertframenumber\,/\,\inserttotalframenumber}}%
+            \hfill\makebox[1cm]{\raisebox{2ex}{\ifbeamerthemethuas@reallyofficial
+            \color{white}\fi\footnotesize\insertframenumber\,/\,\inserttotalframenumber}}%
          \else
-            \makebox[2em][r]{\raisebox{3ex}{\insertframenumber}}%
+            \hfill\makebox[1cm]{\raisebox{2ex}{\ifbeamerthemethuas@reallyofficial
+            \color{white}\fi\footnotesize\insertframenumber}}%
          \fi
 %        \hfill
       \end{beamercolorbox}%
@@ -91,6 +94,16 @@
     \vskip0pt%
   \fi
 }
+
+% Make unused left side bar smaller
+\setbeamersize{sidebar width left=-.5cm}
+%\setbeamersize{sidebar width right=1cm}
+
+\ifbeamerthemethuas@reallyofficial
+\setbeamertemplate{background}{%
+    \includegraphics[width=\paperwidth,height=\paperheight]{beamerthemethuasbackground}%
+}
+\fi
 
 %% Some parameters to set the frame title
 %% Can be changed by user
@@ -122,12 +135,12 @@
 %% Causes the left sidebar to have a THUASgreen filled polygon.
 %% Only when using really official
 \ifbeamerthemethuas@reallyofficial
-\setbeamertemplate{sidebar left}{%
-\begin{tikzpicture}
-\node at (0,0) {~};
-\draw[\beamerthemethuascolor, fill=\beamerthemethuascolor] (0,-\beamerthemethuastitleoffset) -- ++(1.0,-0.25) -- ++(-0.25,-1.5) -- ++(-0.75,-0.125) -- cycle;
-\end{tikzpicture}
-}
+%\setbeamertemplate{sidebar right}{%
+%\begin{tikzpicture}
+%\node at (0,0) {tekst};
+%\draw[thuasblue, fill=thuasblue] (0,1) -- ++(1.0,-0.25) -- ++(-0.25,-1.5) -- ++(-0.75,-0.125) -- cycle;
+%\end{tikzpicture}
+%}
 \fi
 
 \mode<all>

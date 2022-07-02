@@ -6,7 +6,7 @@
 %%
 %% The Hague University of Applied Sciences (THUAS)
 %%
-%% (c)2021 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%% (c)2022 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
 %%
 %%
 %% This work may be distributed and/or modified under the
@@ -38,11 +38,11 @@
 \mode<presentation>
 
 %% Beamer fonts et al.
-\setbeamerfont*{title}{series=\bfseries,size=\Large}
-\setbeamerfont*{sub title}{size=\normalsize}
+\setbeamerfont*{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont*{sub title}{size=\large}
 \ifbeamerthemethuas@official
-  \setbeamerfont*{author}{size=\small}
-  \setbeamerfont*{date}{series=\slshape,size=\small}
+  \setbeamerfont*{author}{size=\normalsize}
+  \setbeamerfont*{date}{size=\normalsize}
 \else
   \setbeamerfont*{author}{size=\normalsize}
   \setbeamerfont*{date}{size=\normalsize}
@@ -101,70 +101,16 @@
                 \itemsep   \parsep}
 \fi
 
-%% For bounding box of image
-\newdimen\tph\tph=0.7\paperheight
-%% Calculate offset according to picture width
-\newdimen\pictoffset
-\setbox0=\hbox{\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}}
-\pictoffset=\paperwidth\advance\pictoffset-\wd0\pictoffset=2\pictoffset
-
-%% Title page
-%% It needs a lot of dimension hacks to get the title page right
+%% Title page, mostly Tikz, run Latex twice!
 \defbeamertemplate*{title page}{thuas}
 {%
-  %% Very dirty hack to test if we use 16:9 or 4:3
-  \ifdim\beamer@paperwidth<12.81cm\relax
-  %% 4:3
-    \begin{tikzpicture}
-      \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
-      \node at (0.5,1.5) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-      \node at (4.60,-2.5) {\resizebox{0.25\paperwidth}{!}{\beamerthemethuaslogo}};
+    \begin{tikzpicture}[remember picture,overlay]
+      \node at (current page.center) {\includegraphics[keepaspectratio,width=\paperwidth,height=\paperheight]{beamerthemethuasfront.pdf}};
+       \node[align=left,text width=8cm,anchor=north west] at (-0.5,-4.3){\usebeamerfont{title}\inserttitle};
+       \node[align=left,text width=8cm,anchor=north west] at (-0.5,-5.3){\usebeamerfont{sub title}\color{thuasblue}\insertsubtitle};
+       \node[align=left,text width=4cm,anchor=north west] at (-0.5,-6.8){\usebeamerfont{author}\insertauthor};
+       \node[align=right,text width=4cm,anchor=north west] at (2.7,-6.8){\usebeamerfont{date}\insertdate};
     \end{tikzpicture}
-    \vskip-2.0cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{title page header}%
-      \usebeamerfont{title}\inserttitle%
-    \end{beamercolorbox}%
-    \vskip0.25cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{author}%
-      %% Dirty color hack for not supported 4:3 aspect ratio
-      \usebeamerfont{author}\color{thuasgray}\insertauthor%
-    \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{date}
-      \usebeamerfont{date}\insertdate%
-    \end{beamercolorbox}%
-  % 16:9
-  \else
-    \begin{tikzpicture}[remember picture]
-      \useasboundingbox (0,0) rectangle (\the\paperwidth,\the\tph);
-      \node at (\pictoffset,3.4) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
-      \node at (10.2,-0.5) {\resizebox{0.26\paperwidth}{!}{\beamerthemethuaslogo}};
-      \ifbeamerthemethuas@official
-        \node[align=left,text width=4.0cm,anchor=north west] at (8.75,3.2) {\usebeamerfont{author}\color{white}\insertauthor}; % TODO: remove dirty hack for white
-        \node[align=left,text width=4.0cm,anchor=south west] at (8.75,3.3) {\usebeamerfont{date}\insertdate};
-      \fi
-    \end{tikzpicture}
-    \ifbeamerthemethuas@official
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{title page header}%
-        \usebeamerfont{title}\inserttitle%
-      \end{beamercolorbox}%
-      \vskip0.20cm%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{sub title}%
-        \usebeamerfont{sub title}\insertsubtitle%
-      \end{beamercolorbox}%
-    \else
-      \vskip-0.25cm%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{title page header}%
-        \usebeamerfont{title}\inserttitle%
-      \end{beamercolorbox}%
-      \vskip0.20cm%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{author}%
-        \usebeamerfont{author}\insertauthor%
-      \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{date}
-        \usebeamerfont{date}\insertdate%
-      \end{beamercolorbox}%
-    \fi
-  \fi
 }
 
 %% Redefine the \maketitle macro. It now issues an error if \maketitle

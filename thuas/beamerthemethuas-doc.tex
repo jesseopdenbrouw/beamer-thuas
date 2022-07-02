@@ -6,7 +6,7 @@
 %%
 %% The Hague University of Applied Sciences (THUAS)
 %%
-%% (c)2021 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%% (c)2022 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
 %%
 %%
 %% This work may be distributed and/or modified under the
@@ -120,16 +120,7 @@
 \begin{itemize}
 \item Gebruik \lstinline|\documentclass[aspectratio=169]{beamer}|
 \end{itemize}
-\item Maar sommige beamers werken nog met 4:3, dus:
-\begin{itemize}
-\item Gebruik \lstinline|\documentclass[aspectratio=43]{beamer}|
-\item Wordt niet actief ondersteund
-\end{itemize}
 \item Er zijn nog andere formaten maar die worden niet ondersteund
-\item Er zijn verschillen in de titelslide tussen 16:9 en 4:3
-\begin{itemize}
-\item Dat komt o.a.\@ door het plaatsen van het plaatje op de titelslide
-\end{itemize}
 \item Er zijn verschillen tussen Xe-, Lua- en pdf\LaTeX
 \begin{itemize}
 \item Dat komt o.a.\@ door de vorm en de grootte van de gebruikte fonts
@@ -295,23 +286,6 @@ pdf\LaTeX{}:
 \end{frame}
 
 
-\beamerthemethuaslogofalse
-
-\begin{frame}[fragile]
-\frametitle{THUAS Beamer Slides}
-\begin{itemize}
-\item Standaard wordt het logo rechtsonder weergegeven, behalve bij de titelslide
-\item Het logo kan je uitzetten met \lstinline|\beamerthemethuaslogofalse|
-\item Het logo blijft dan uit
-\item Het logo kan je aanzetten met \lstinline|\beamerthemethuaslogotrue|
-\item Het logo blijft dan aan
-\item Op deze slide is het logo uit
-\end{itemize}
-\end{frame}
-
-\beamerthemethuaslogotrue
-
-
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
@@ -332,14 +306,7 @@ pdf\LaTeX{}:
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
 \item Verschillende offici\"ele versies.
-\item Gebruik \lstinline|\usetheme[official]{thuas}| voor een offici\"ele titelslide.
-\begin{itemize}
-\item Is de default waarde, dus je kan het ook weglaten.
-\end{itemize}
-\item Gebruik \lstinline|\usetheme[moreofficial]{thuas}| om aan de linkerkant de THUAS-groene polygon te krijgen.
-\begin{itemize}
-\item De polygon schuift mee met de plaats van de titel.
-\end{itemize}
+\item Gebruik \lstinline|\usetheme[moreofficial]{thuas}| om aan de rechterkant de THUAS-blauwe polygon te krijgen en de THUAS-groene polygon rond het framenummer.
 \item Gebruik \lstinline|\usetheme[reallyofficial]{thuas}| om ook nog een \textsl{transfade} tussen twee slides te krijgen.
 \end{itemize}
 \end{frame}
@@ -684,10 +651,10 @@ De theme package bestaat uit:
 
 \begin{frame}[fragile]
 \frametitle{Gory details...}
-Er wordt \'e\'en plaatje gebruikt
+Er wordt twee plaatjes gebruikt
 \begin{itemize}
 \item Plaatje op titelslide: \lstinline|beamerthemethuasfront.pdf|
-\item De logo's worden in PGF afgebeeld
+\item Achtergrond op slides: \lstinline|beamerthemethuasbackground.pdf|
 \item []
 \item De positie van de titel op een frame wordt getypeset door drie \lstinline|length|s
 \begin{itemize}
@@ -764,7 +731,8 @@ De allerlaatste slide
 \begin{frame}
 \frametitle{Versiebeheer}
 \begin{itemize}
-\item \beamerthemethuasversion\ -- Initial release
+\item v1.0 -- Initial release
+\item \beamerthemethuasversion\ -- Update to new style
 \end{itemize}
 \end{frame}
 
