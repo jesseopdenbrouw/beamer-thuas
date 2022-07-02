@@ -1,41 +1,80 @@
+%%
+%%
+%% beamerinnerthemethuas.sty
+%%
+%% Definitions for the beamer layout for
+%%
+%% The Hague University of Applied Sciences (THUAS)
+%%
+%% (c)2021 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%%
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is J.E.J. op den Brouw
+%%
+%% This work consists of the files
+%%   beamerthemethuas.sty
+%%   beamerinnerthemethuas.sty
+%%   beamerouterthemethuas.sty
+%%   beamercolorthemethuas.sty
+%%   beamerthemethuas-doc.tex
+%%   beamerthemethuasfront.pdf
+%%
+%% and the derived file beamerthemethuas-doc.pdf
+%%
+
+\ProvidesPackage{beamerinnerthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences inner theme]
+\typeout{The Hague University of Applied Sciences inner theme \beamerthemethuasversion\space (JodB, 2021)}
+
 \mode<presentation>
 
-%\setbeamertemplate{background}{
-%  \begin{tikzpicture}
-%  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-%  \fill[color=brown] (0,2) rectangle (\the\paperwidth,\the\paperheight);
-%  \fill[color=orange] (0,0) rectangle(2.95,1.9);
-%  \fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
-%  \ifnum\thepage>1\relax%
-%   \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
-%   \fi
-%  \end{tikzpicture}
-%}
+%% Beamer fonts et al.
+\setbeamerfont*{title}{series=\bfseries,size=\Large}
+\setbeamerfont*{sub title}{size=\normalsize}
+\ifbeamerthemethuas@official
+  \setbeamerfont*{author}{size=\small}
+  \setbeamerfont*{date}{series=\slshape,size=\small}
+\else
+  \setbeamerfont*{author}{size=\normalsize}
+  \setbeamerfont*{date}{size=\normalsize}
+\fi
+\setbeamerfont*{frametitle}{series=\bfseries,size=\Large}
 
-\setbeamerfont{title}{series=\bfseries,size=\Huge}
-\setbeamerfont{frametitle}{series=\bfseries,size=\LARGE}
-
-\setbeamertemplate{itemize item}{\color{thuasgreen}$\bullet$}
-\setbeamertemplate{itemize subitem}{\color{thuasgreen}$\bullet$}
-\setbeamertemplate{itemize subsubitem}{\color{thuasgreen}$\bullet$}
+\setbeamertemplate{itemize item}{\color{thuasgray}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{thuasgray}--}
+\setbeamertemplate{itemize subsubitem}{\color{thuasgray}--}
 
 \setbeamertemplate{enumerate item}{\arabic{enumi}.}
 \setbeamertemplate{enumerate subitem}{\alph{enumii}.}
-\setbeamertemplate{enumerate subitem}{\Roman{enumiii}.}
+\setbeamertemplate{enumerate subsubitem}{\Roman{enumiii}.}
 
-\setbeamercolor{enumerate item}{fg=thuasgreen}
-\setbeamercolor{enumerate subitem}{fg=thuasgreen}
-\setbeamercolor{enumerate subsubitem}{fg=thuasgreen}
+\setbeamerfont*{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont*{itemize/enumerate subbody}{size=\small}
+\setbeamerfont*{itemize/enumerate subsubbody}{size=\small}
 
-\setbeamerfont{itemize/enumerate body}{size=\normalsize}
-\setbeamerfont{itemize/enumerate subbody}{size=\small}
-\setbeamerfont{itemize/enumerate subsubbody}{size=\scriptsize}
+\setbeamerfont*{page number in head/foot}{size=\small}
 
-\setbeamerfont{page number in head/foot}{size=\normalsize}
-%\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{caption}[numbered]
 
-% More room between sole lines and list env.
-%https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
+\setbeamerfont*{caption}{size=\footnotesize}
+
+\setbeamerfont*{description item}{series=\bfseries,size=\normalsize}
+
+%% Remove skips with figure and table
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+
+%% More room between sole lines and list env.
+%% https://tex.stackexchange.com/questions/31505/trouble-combining-enumitem-and-beamer
 \setlength{\parskip}{1ex}
 
 \setlength\leftmargini  {1.5em}
@@ -45,41 +84,101 @@
 \setlength  \labelwidth{\leftmargini}
 \addtolength\labelwidth{-\labelsep}
 
-\def\@listi{\leftmargin\leftmargini
-            \topsep 0\p@ \@plus2\p@ \@minus2.5\p@
-            \parsep 5\p@
-            \itemsep3\p@ \@plus2\p@ \@minus3\p@}
-\let\@listI\@listi
-\def\@listii{\leftmargin\leftmarginii
-              \topsep    0\p@ \@plus1\p@ \@minus2\p@
-              \parsep    0\p@   \@plus\p@
-              \itemsep   \parsep}
-\def\@listiii{\leftmargin\leftmarginiii
-              \topsep    2\p@ \@plus1\p@ \@minus2\p@
-              \parsep    0\p@   \@plus\p@
-              \itemsep   \parsep}
+%% Tight or loose spacing?
+\ifbeamerthemethuas@loose
+  \def\@listi{\leftmargin\leftmargini
+              \topsep 0\p@ \@plus2\p@ \@minus2.5\p@
+              \parsep 3\p@
+              \itemsep3\p@ \@plus2\p@ \@minus3\p@}
+  \let\@listI\@listi
+  \def\@listii{\leftmargin\leftmarginii
+                \topsep    0\p@ \@plus1\p@ \@minus2\p@
+                \parsep    1\p@   \@plus\p@
+                \itemsep   \parsep}
+  \def\@listiii{\leftmargin\leftmarginiii
+                \topsep    0\p@ \@plus1\p@ \@minus2\p@
+                \parsep    1\p@   \@plus\p@
+                \itemsep   \parsep}
+\fi
 
-
-%% For bounding box of imgae
+%% For bounding box of image
 \newdimen\tph\tph=0.7\paperheight
-% Title page
-\defbeamertemplate*{title page}{thuas}[1][]
-{
+%% Calculate offset according to picture width
+\newdimen\pictoffset
+\setbox0=\hbox{\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}}
+\pictoffset=\paperwidth\advance\pictoffset-\wd0\pictoffset=2\pictoffset
+
+%% Title page
+%% It needs a lot of dimension hacks to get the title page right
+\defbeamertemplate*{title page}{thuas}
+{%
+  %% Very dirty hack to test if we use 16:9 or 4:3
+  \ifdim\beamer@paperwidth<12.81cm\relax
+  %% 4:3
     \begin{tikzpicture}
-    \useasboundingbox (0.5,0) [yshift=-.55cm] rectangle (\the\paperwidth,\the\tph);
-    \includegraphics[width=0.925\paperwidth]{thuasfront};
+      \useasboundingbox (-0.385\paperwidth,-1) [yshift=-2.3cm] rectangle (\the\paperwidth,\the\tph);
+      \node at (0.5,1.5) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
+      \node at (4.60,-2.5) {\resizebox{0.25\paperwidth}{!}{\beamerthemethuaslogo}};
     \end{tikzpicture}
-    \begin{beamercolorbox}[wd=12cm,leftskip=0cm,sep=1pt,#1]{title page header}%
-      \usebeamerfont{title}\inserttitle\par%
+    \vskip-2.0cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{title page header}%
+      \usebeamerfont{title}\inserttitle%
     \end{beamercolorbox}%
     \vskip0.25cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=0.05cm,sep=1pt,#1]{author}%
-      \usebeamerfont{author}\insertauthor%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{author}%
+      %% Dirty color hack for not supported 4:3 aspect ratio
+      \usebeamerfont{author}\color{thuasgray}\insertauthor%
     \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=12cm,leftskip=0.05cm,sep=1pt,#1]{date}
-      \usebeamerfont{author}\insertdate%
+    \begin{beamercolorbox}[wd=12cm,leftskip=0.9cm,sep=1pt]{date}
+      \usebeamerfont{date}\insertdate%
     \end{beamercolorbox}%
-    \vfill
+  % 16:9
+  \else
+    \begin{tikzpicture}[remember picture]
+      \useasboundingbox (0,0) rectangle (\the\paperwidth,\the\tph);
+      \node at (\pictoffset,3.4) {\includegraphics[width=0.82\paperwidth]{beamerthemethuasfront.pdf}};
+      \node at (10.2,-0.5) {\resizebox{0.26\paperwidth}{!}{\beamerthemethuaslogo}};
+      \ifbeamerthemethuas@official
+        \node[align=left,text width=4.0cm,anchor=north west] at (8.75,3.2) {\usebeamerfont{author}\color{white}\insertauthor}; % TODO: remove dirty hack for white
+        \node[align=left,text width=4.0cm,anchor=south west] at (8.75,3.3) {\usebeamerfont{date}\insertdate};
+      \fi
+    \end{tikzpicture}
+    \ifbeamerthemethuas@official
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{title page header}%
+        \usebeamerfont{title}\inserttitle%
+      \end{beamercolorbox}%
+      \vskip0.20cm%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{sub title}%
+        \usebeamerfont{sub title}\insertsubtitle%
+      \end{beamercolorbox}%
+    \else
+      \vskip-0.25cm%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{title page header}%
+        \usebeamerfont{title}\inserttitle%
+      \end{beamercolorbox}%
+      \vskip0.20cm%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{author}%
+        \usebeamerfont{author}\insertauthor%
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=12cm,leftskip=-0.5cm,sep=0pt]{date}
+        \usebeamerfont{date}\insertdate%
+      \end{beamercolorbox}%
+    \fi
+  \fi
 }
+
+%% Redefine the \maketitle macro. It now issues an error if \maketitle
+%% is wihtin a frame (\frame or frame environment)
+\def\beamerthemethuas@maketitle{\ifbeamer@inframe\PackageError{beamerthemethuas}{\string\maketitle\space in \string\frame!}{Please do not use \string\maketitle\space within a frame}\else\frame{\titlepage}\fi}
+
+%% To produce a second, third ... title page
+\renewcommand{\maketitle}{{%
+  \setbeamertemplate{sidebar left}{}
+  \setbeamertemplate{logo}{}%
+  \setbeamertemplate{footline}{}%
+  \beamerthemethuas@maketitle%
+}}
+
+\let\maketitleagain\maketitle
 
 \mode<all>

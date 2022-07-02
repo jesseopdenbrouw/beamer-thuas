@@ -1,40 +1,133 @@
+%%
+%%
+%% beamerouterthemethuas.sty
+%%
+%% Definitions for the beamer layout for
+%%
+%% The Hague University of Applied Sciences (THUAS)
+%%
+%% (c)2021 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%%
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is J.E.J. op den Brouw
+%%
+%% This work consists of the files
+%%   beamerthemethuas.sty
+%%   beamerinnerthemethuas.sty
+%%   beamerouterthemethuas.sty
+%%   beamercolorthemethuas.sty
+%%   beamerthemethuas-doc.tex
+%%   beamerthemethuasfront.pdf
+%%
+%% and the derived file beamerthemethuas-doc.pdf
+%%
+
+\ProvidesPackage{beamerouterthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences outer theme]
+\typeout{The Hague University of Applied Sciences outer theme \beamerthemethuasversion\space (JodB, 2021)}
+
 \mode<presentation>
 
+%% Default is no navigation
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{blocks}[rounded][shadow=true]  
 
-\defbeamertemplate*{footline}{thuas}[1][]
-{
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=0.95\paperwidth,ht=1ex,dp=4ex,right]{section in head/foot}%
-    \includegraphics[scale=0.5]{thuaslogo}\hspace*{-1ex}%
-    \ifnum \theframenumber>1\relax%
-      \makebox[1em][r]{\raisebox{1.3em}{\insertframenumber}}%
-    \fi
-  \end{beamercolorbox}}%
-  \vskip0pt%
+%% Set navigation
+\DeclareOption{nav}{%
+  %% The header, navigation or not
+  \beamerthemethuas@boolnavtrue
 }
 
-\setbeamerfont{footline}{size=\small}
-\setbeamercolor{section in head/foot}{fg=black}
+\ProcessOptions\relax
 
 
-% Frame title
-\defbeamertemplate*{frametitle}{thuas}[1][]
+%% Check if we have navigation or not
+\ifbeamerthemethuas@boolnav
+  \defbeamertemplate*{headline}{thuas}{%
+    \hfill\usebeamercolor[fg]{navigation symbols dimmed}%
+    \insertslidenavigationsymbol%
+    \insertframenavigationsymbol%
+    \insertsectionnavigationsymbol%
+    \insertsubsectionnavigationsymbol%
+    \insertdocnavigationsymbol%
+    \insertbackfindforwardnavigationsymbol%
+    \hspace*{2ex}%
+  }
+\else
+%% Compensate when not using navigation symbols
+  \defbeamertemplate*{headline}{thuas}{%
+    %% Create a hbox with all navigation symbols
+    \setbox0=\hbox{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsectionnavigationsymbol\insertsubsectionnavigationsymbol\insertdocnavigationsymbol\insertbackfindforwardnavigationsymbol}%
+    %% Make a vertical space of the height of the (not shown) navigation symbols
+    \vspace*{\ht0}%
+  }
+\fi
+
+%% The footer of the slide
+\defbeamertemplate*{footline}{thuas}
 {
-\vskip1cm%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0cm]{frametitle} 
-  \begin{tikzpicture}
-  \useasboundingbox[fill=white] (0.0,0) rectangle(\the\paperwidth,\the\paperheight);
-%  \ifx\insertframesubtitle\@empty%
-      {\node[anchor=west] at (.75,.61){\insertframetitle};}
-%      \else%
-%      {\node[anchor= west] at (1,0.81){\insertframetitle};%
-%       \node[anchor= west] at (3.2,0.41){\insertframesubtitle};}%
-%      \fi
-  \end{tikzpicture}
+  \usebeamercolor{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \ifnum \theframenumber>1\relax
+    \leavevmode
+    \hbox{%
+      \begin{beamercolorbox}[wd=0.95\paperwidth,ht=0ex,dp=0ex]{section in head/foot}%
+         \ifbeamerthemethuas@numframes
+            \makebox[3.2em][r]{\raisebox{3ex}{\insertframenumber\,/\,\inserttotalframenumber}}%
+         \else
+            \makebox[2em][r]{\raisebox{3ex}{\insertframenumber}}%
+         \fi
+%        \hfill
+      \end{beamercolorbox}%
+    }%
+    \vskip0pt%
+  \fi
+}
+
+%% Some parameters to set the frame title
+%% Can be changed by user
+\newlength{\beamerthemethuastitleoffset}
+\setlength{\beamerthemethuastitleoffset}{0.7cm}
+\newlength{\beamerthemethuastitleheight}
+\setlength{\beamerthemethuastitleheight}{2.25ex}
+\newlength{\beamerthemethuastitledepth}
+\setlength{\beamerthemethuastitledepth}{2.5ex}
+
+%% Frame title, \strut makes all titles have the same height and depth
+\defbeamertemplate*{frametitle}{thuas}
+{
+  \vspace*{\beamerthemethuastitleoffset}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[wd=\the\@tempdima,
+                         left,
+                         ht=\beamerthemethuastitleheight,
+                         dp=\beamerthemethuastitledepth,
+                         sep=0pt,
+                         leftskip=\the\beamer@leftmargin,
+                        ]{frametitle} 
+  \strut\insertframetitle
   \end{beamercolorbox}
 }
+
+%% Causes the left sidebar to have a THUASgreen filled polygon.
+%% Only when using really official
+\ifbeamerthemethuas@reallyofficial
+\setbeamertemplate{sidebar left}{%
+\begin{tikzpicture}
+\node at (0,0) {~};
+\draw[\beamerthemethuascolor, fill=\beamerthemethuascolor] (0,-\beamerthemethuastitleoffset) -- ++(1.0,-0.25) -- ++(-0.25,-1.5) -- ++(-0.75,-0.125) -- cycle;
+\end{tikzpicture}
+}
+\fi
 
 \mode<all>

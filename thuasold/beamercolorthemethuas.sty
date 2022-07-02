@@ -1,5 +1,41 @@
-\mode<presentation>
+%%
+%%
+%% beamercolorthemethuas.sty
+%%
+%% Definitions for the beamer layout for
+%%
+%% The Hague University of Applied Sciences (THUAS)
+%%
+%% (c)2021 J. op den Brouw  <J.E.J.opdenBrouw@hhs.nl>
+%%
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is J.E.J. op den Brouw
+%%
+%% This work consists of the files
+%%   beamerthemethuas.sty
+%%   beamerinnerthemethuas.sty
+%%   beamerouterthemethuas.sty
+%%   beamercolorthemethuas.sty
+%%   beamerthemethuas-doc.tex
+%%   beamerthemethuasfront.pdf
+%%
+%% and the derived file beamerthemethuas-doc.pdf
+%%
 
+\ProvidesPackage{beamercolorthemethuas}[\beamerthemethuasdate\space \beamerthemethuasversion\space The Hague University of Applied Sciences color theme]
+\typeout{The Hague University of Applied Sciences color theme \beamerthemethuasversion\space (JodB, 2021)}
+
+\mode<presentation>
 
 %% Define thuas color green
 \definecolor{thuasgreen}{RGB}{158,167,0}
@@ -9,14 +45,30 @@
 \definecolor{thuasyellow}{RGB}{255,168,60}
 \definecolor{thuasred}{RGB}{202,67,60}
 
-
-\setbeamercolor*{title page header}{fg=thuasgreen}
-\setbeamercolor*{author}{fg=black}
-\setbeamercolor*{date}{fg=black}
-\setbeamercolor*{frametitle}{fg=thuasgreen}
-
-\setbeamercolor*{block title}{use=structure,fg=white,bg=thuasgreen}
-
+%% Colors
 \setbeamercolor*{alerted text}{fg=thuasred}
+
+\setbeamercolor*{title page header}{fg=thuasgray}
+\ifbeamerthemethuas@official
+\setbeamercolor*{author}{fg=white}
+\else
+\setbeamercolor*{author}{fg=thuasgray}
+\fi
+\setbeamercolor*{date}{fg=thuasgray}
+\setbeamercolor*{frametitle}{fg=\beamerthemethuascolor}
+\setbeamercolor*{block title}{fg=\beamerthemethuascolor}
+%\setbeamercolor*{block title}{use=structure,fg=white,bg=thuasgreen}
+\setbeamercolor*{enumerate item}{fg=thuasgray}
+\setbeamercolor*{enumerate subitem}{fg=thuasgray}
+\setbeamercolor*{enumerate subsubitem}{fg=thuasgray}
+\setbeamercolor*{itemize item}{fg=thuasgray}
+\setbeamercolor*{itemize subitem}{fg=thuasgray}
+\setbeamercolor*{itemize subsubitem}{fg=thuasgray}
+\setbeamercolor*{page number in head/foot}{fg=thuasgray}
+\setbeamercolor*{normal text}{fg=thuasgray}
+\setbeamercolor*{page number in head/foot}{fg=thuasgray}
+\setbeamercolor*{caption name}{fg=thuasgray}
+\setbeamercolor*{qed symbol}{fg=\beamerthemethuascolor}
+\setbeamercolor*{description item}{fg=thuasgray}
 
 \mode<all>
