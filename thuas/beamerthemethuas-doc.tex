@@ -211,9 +211,6 @@ pdf\LaTeX{}:
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
 \item Subtitel op titelslide wordt weergegeven
-\begin{itemize}
-\item Niet bij de originele setting
-\end{itemize}
 \item Subtitels op frames worden \emph{niet} weergegeven
 \begin{itemize}
 \item Deze subtitels worden gewoon genegeerd
@@ -269,10 +266,10 @@ pdf\LaTeX{}:
 \begin{frame}[fragile]
 \frametitle{THUAS Beamer Slides}
 \begin{itemize}
-\item De standaard kleur voor slide titel en logo is groen.
-\item Je kan dit veranderen in THUAS grijs
+\item De standaard kleur voor slide titel is grijs.
+\item Je kan dit veranderen in THUAS groen
 \begin{itemize}
-\item Gebruik \lstinline|\usetheme[grey]{thuas}|
+\item Gebruik \lstinline|\usetheme[green]{thuas}|
 \end{itemize}
 \item Je kan dit veranderen in zwart
 \begin{itemize}
@@ -427,7 +424,7 @@ a = 26;
 \begin{frame}[fragile]
 \frametitle{Bredere slide}
 \begin{itemize}
-\item De breedte (lees: right margin) is al vrij breed, maar soms will je toch iets meer kwijt op een regel.
+\item De breedte (lees: right margin) is al vrij breed, maar soms wil je toch iets meer kwijt op een regel.
 \item De meest eenvoudige optie is om een \lstinline|minipage| environment te gebruiken:
 \begin{lstlisting}[caption=]
 \begin{minipage}{1.05\textwidth}
@@ -437,12 +434,12 @@ lol lol lol lol lol lol ...
 
 \item Dat ziet er dan uit als:
 
-\medskip
+\smallskip
 \begin{minipage}{1.05\textwidth}
 \item lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol lol
 \end{minipage}
 
-\item Nadeel: de skip aan het begin is niet netjes, dus die moet je handmatig bijwerken met \lstinline|\medskip|
+\item Nadeel: de skip aan het begin is niet netjes, dus die moet je handmatig bijwerken met \lstinline|\smallskip|
 \end{itemize}
 \end{frame}
 
